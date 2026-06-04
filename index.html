@@ -506,6 +506,62 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .seam-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--b),transparent)}
 .seam-tag{font-family:var(--mn);font-size:.58rem;letter-spacing:3px;color:var(--tm);text-transform:uppercase;white-space:nowrap}
 @media(max-width:900px){.seam{padding:0 20px}}
+
+/* ════════════════════════════════════════════════════
+   CASE STUDY MODAL
+   ════════════════════════════════════════════════════ */
+#caseOverlay{position:fixed;inset:0;z-index:10005;background:rgba(5,5,9,.82);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s;display:flex;justify-content:center;overflow-y:auto;padding:40px 20px}
+#caseOverlay.open{opacity:1;pointer-events:auto}
+.case{position:relative;max-width:900px;width:100%;background:linear-gradient(180deg,#101020,#0c0c16);border:1px solid var(--bv);border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(168,85,247,.12);transform:translateY(24px) scale(.98);transition:transform .35s cubic-bezier(.2,.8,.2,1);height:max-content;margin:auto}
+#caseOverlay.open .case{transform:none}
+.case-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--bv);background:rgba(16,16,32,.9);backdrop-filter:blur(10px);border-radius:14px 14px 0 0}
+.case-top .ct-id{font-family:var(--mn);font-size:.64rem;letter-spacing:2px;color:var(--v)}
+.case-close{width:34px;height:34px;border-radius:8px;border:1px solid var(--bv);background:transparent;color:var(--v);font-size:1rem;cursor:pointer;transition:all .2s;line-height:1}
+.case-close:hover{background:rgba(168,85,247,.12);box-shadow:var(--gv)}
+.case-body{padding:32px 40px 44px}
+.case-hero-tag{font-family:var(--mn);font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--v);margin-bottom:10px}
+.case-h1{font-family:var(--hd);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:10px}
+.case-lede{font-family:var(--ui);font-size:.95rem;color:var(--ts);line-height:1.8;margin-bottom:8px}
+.case-meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 28px}
+.case-meta .chip{border-color:rgba(168,85,247,.25);color:var(--v)}
+.cs-block{margin-top:34px}
+.cs-kicker{display:flex;align-items:center;gap:10px;font-family:var(--mn);font-size:.66rem;letter-spacing:3px;text-transform:uppercase;color:var(--t);margin-bottom:14px}
+.cs-kicker::before{content:'';width:18px;height:1px;background:var(--t)}
+.cs-vk{color:var(--v)}.cs-vk::before{background:var(--v)}
+.cs-p{font-family:var(--ui);font-size:.92rem;color:var(--ts);line-height:1.9;margin-bottom:12px}
+.cs-p strong{color:#fff;font-weight:600}
+.cs-list{list-style:none;margin:8px 0}
+.cs-list li{font-family:var(--ui);font-size:.9rem;color:var(--ts);line-height:1.7;padding:6px 0 6px 22px;position:relative}
+.cs-list li::before{content:'▹';position:absolute;left:0;color:var(--t)}
+.cs-list.v li::before{color:var(--v)}
+
+/* Architecture pipeline diagram */
+.arch{display:flex;flex-direction:column;gap:0;margin:18px 0;border:1px solid var(--b);border-radius:10px;overflow:hidden;background:rgba(0,0,0,.2)}
+.arch-row{display:flex;align-items:stretch;gap:0}
+.arch-stage{flex:1;padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.05)}
+.arch-stage:last-child{border-bottom:none}
+.arch-tag{font-family:var(--mn);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:inline-block;padding:2px 8px;border-radius:4px}
+.at-in{color:var(--tm);border:1px solid rgba(255,255,255,.1)}
+.at-audit{color:var(--t);border:1px solid var(--b);background:rgba(0,245,196,.05)}
+.at-mit{color:var(--v);border:1px solid var(--bv);background:rgba(168,85,247,.05)}
+.at-rep{color:#ffaa44;border:1px solid rgba(255,170,68,.3);background:rgba(255,170,68,.05)}
+.arch-name{font-family:var(--ui);font-size:.85rem;color:#fff;font-weight:600;margin-bottom:3px}
+.arch-desc{font-family:var(--mn);font-size:.66rem;color:var(--ts);line-height:1.6}
+.arch-flow{text-align:center;color:var(--tm);font-size:.9rem;padding:4px 0;background:rgba(255,255,255,.015)}
+
+/* Results metric grid */
+.cs-results{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.csm{background:rgba(255,255,255,.02);border:1px solid var(--b);border-radius:10px;padding:18px 14px;text-align:center}
+.csm:nth-child(even){border-color:var(--bv)}
+.csm-n{font-family:var(--hd);font-size:1.6rem;font-weight:800;color:var(--t);line-height:1}
+.csm:nth-child(even) .csm-n{color:var(--v)}
+.csm-l{font-family:var(--mn);font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--tm);margin-top:8px;line-height:1.4}
+.case-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--bv)}
+@media(max-width:700px){
+  .case-body{padding:24px 22px 32px}
+  .arch-row{flex-direction:column}
+  .cs-results{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body class="booting">
@@ -686,6 +742,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="ph">
           <div class="pbd"><span class="bdg bv2">OPEN SOURCE</span><span class="bdg bv2">RESEARCH</span></div>
           <div class="pln">
+            <button type="button" class="bp" style="font-size:.66rem;padding:10px 18px" onclick="openCase()">↳ READ CASE STUDY</button>
             <a href="https://github.com/keshavhacker1609/ObscuraAI" target="_blank" rel="noopener" class="bv">GitHub ↗</a>
           </div>
         </div>
@@ -986,6 +1043,105 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </footer>
 
 </div><!-- /main -->
+
+<!-- ════════ CASE STUDY MODAL — ObscuraAI ════════ -->
+<div id="caseOverlay" onclick="if(event.target===this)closeCase()">
+  <article class="case" role="dialog" aria-modal="true" aria-label="ObscuraAI case study">
+    <div class="case-top">
+      <span class="ct-id">CASE STUDY · 01 · OBSCURA-AI · PRIVACY-PRESERVING ML</span>
+      <button class="case-close" onclick="closeCase()" aria-label="Close">✕</button>
+    </div>
+    <div class="case-body">
+      <div class="case-hero-tag">[ ADVERSARIAL DEMOGRAPHIC LEAKAGE · AUDIT → MITIGATE → REPORT ]</div>
+      <h1 class="case-h1">ObscuraAI — Auditing What a Face Recognition Model Secretly Knows</h1>
+      <p class="case-lede">Face recognition systems are graded on accuracy. But their embeddings quietly memorize <strong>who you are</strong> — gender, age, ethnicity — even when they were never trained to. ObscuraAI is a full-stack framework that measures that hidden leakage, suppresses it, and produces a compliance-grade paper trail.</p>
+      <div class="case-meta">
+        <span class="chip">PyTorch</span><span class="chip">FastAPI</span><span class="chip">React + Vite</span><span class="chip">scikit-learn</span><span class="chip">Recharts</span><span class="chip">Cryptographic Audit Logs</span>
+      </div>
+
+      <!-- PROBLEM -->
+      <div class="cs-block">
+        <div class="cs-kicker">01 — The Problem</div>
+        <p class="cs-p">A face recognition model maps a photo to a high-dimensional <strong>embedding</strong>. Two faces of the same person land close together — that's the intended signal. The unintended signal: those same embeddings are <strong>linearly separable by protected attributes</strong>. An attacker who only ever sees the embeddings — never the original image — can train a simple classifier to recover gender, age bracket, or ethnicity with alarming accuracy.</p>
+        <p class="cs-p">Under <strong>GDPR</strong> and India's <strong>DPDP Act</strong>, that's a latent privacy violation hiding inside a "neutral" vector. Yet there was no standard tooling to <em>quantify</em> it, <em>reduce</em> it without destroying recognition accuracy, or <em>document</em> it for an auditor. ObscuraAI closes all three gaps in one pipeline.</p>
+      </div>
+
+      <!-- APPROACH -->
+      <div class="cs-block">
+        <div class="cs-kicker">02 — The Approach</div>
+        <p class="cs-p">A three-stage pipeline, each stage independently measurable:</p>
+        <ul class="cs-list">
+          <li><strong>Audit (attack it).</strong> Freeze the embeddings and train two adversarial attacker models — a <strong>Logistic Regression</strong> probe (tests linear leakage) and an <strong>MLP</strong> probe (tests non-linear leakage) — to predict each protected attribute. Leakage is scored by <strong>AUC</strong>: 0.5 = the model knows nothing, 1.0 = perfect recovery.</li>
+          <li><strong>Mitigate (defend it).</strong> Apply a <strong>Gradient Reversal Layer (GRL)</strong> for adversarial disentanglement — the network is explicitly penalized for encoding protected attributes — backed by a secondary <strong>Gaussian Noise Injection</strong> sanitization layer. Recognition utility is tracked with <strong>TAR@FAR</strong> so privacy gains never silently break the model.</li>
+          <li><strong>Report (prove it).</strong> Emit <strong>IEEE-style Model Cards</strong> carrying Max Demographic Disparity scores, plus <strong>tamper-evident cryptographic audit logs</strong> so a regulator can verify the result was not edited after the fact.</li>
+        </ul>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="cs-block">
+        <div class="cs-kicker cs-vk">03 — System Architecture</div>
+        <div class="arch">
+          <div class="arch-stage">
+            <span class="arch-tag at-in">Input</span>
+            <div class="arch-name">Embedding Extractor</div>
+            <div class="arch-desc">PyTorch · 200,000 face samples → frozen embedding space</div>
+          </div>
+          <div class="arch-flow">↓</div>
+          <div class="arch-row">
+            <div class="arch-stage">
+              <span class="arch-tag at-audit">Stage 1 · Audit</span>
+              <div class="arch-name">Adversarial Attacker Models</div>
+              <div class="arch-desc">LR + MLP probes → per-attribute leakage AUC</div>
+            </div>
+            <div class="arch-stage">
+              <span class="arch-tag at-mit">Stage 2 · Mitigate</span>
+              <div class="arch-name">GRL + Gaussian Noise</div>
+              <div class="arch-desc">Adversarial disentanglement · utility tracked via TAR@FAR</div>
+            </div>
+            <div class="arch-stage">
+              <span class="arch-tag at-rep">Stage 3 · Report</span>
+              <div class="arch-name">Model Cards + Crypto Logs</div>
+              <div class="arch-desc">Max Demographic Disparity · tamper-evident trail</div>
+            </div>
+          </div>
+          <div class="arch-flow">↓</div>
+          <div class="arch-stage">
+            <span class="arch-tag at-in">Surface</span>
+            <div class="arch-name">FastAPI backend · React + Recharts dashboard</div>
+            <div class="arch-desc">Live pipeline monitoring · 7 publication-quality visualizations (radar charts, leakage trade-off curves)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="cs-block">
+        <div class="cs-kicker">04 — Results</div>
+        <div class="cs-results">
+          <div class="csm"><div class="csm-n">200K</div><div class="csm-l">Samples Audited</div></div>
+          <div class="csm"><div class="csm-n">98.4%</div><div class="csm-l">Demographic Parity (post-mitigation)</div></div>
+          <div class="csm"><div class="csm-n">LR+MLP</div><div class="csm-l">Dual Attacker AUC Audit</div></div>
+          <div class="csm"><div class="csm-n">7</div><div class="csm-l">Publication-Quality Visuals</div></div>
+        </div>
+        <p class="cs-p" style="margin-top:18px">The headline outcome: protected-attribute leakage was driven down toward chance-level AUC while <strong>recognition utility was preserved</strong> under TAR@FAR — the privacy/utility trade-off the field usually treats as a wall. Every run ships with a signed model card, so the result is reproducible and auditable, not just a number in a notebook.</p>
+      </div>
+
+      <!-- DECISIONS -->
+      <div class="cs-block">
+        <div class="cs-kicker cs-vk">05 — Why These Engineering Decisions</div>
+        <ul class="cs-list v">
+          <li><strong>Two attacker models, not one.</strong> LR alone only catches linear leakage; an MLP exposes leakage a linear probe would miss. Reporting both gives an honest upper bound on what an adversary could extract.</li>
+          <li><strong>GRL over naïve noise.</strong> Pure noise degrades recognition accuracy fast. The Gradient Reversal Layer removes attribute signal <em>at the representation level</em>, so utility survives — noise is only a secondary safety net.</li>
+          <li><strong>Cryptographic logs by design.</strong> Fairness claims are worthless if they can be edited after an audit. Tamper-evident logging turns "trust me" into "verify me" — the standard a real compliance review demands.</li>
+        </ul>
+      </div>
+
+      <div class="case-cta">
+        <a href="https://github.com/keshavhacker1609/ObscuraAI" target="_blank" rel="noopener" class="bp">View Source on GitHub ↗</a>
+        <a href="#research" class="bv" onclick="closeCase()">Read the Paper Abstract →</a>
+      </div>
+    </div>
+  </article>
+</div>
 
 <script>
 /* ═══════════════════════════════════════════════
@@ -1309,6 +1465,21 @@ function initNavScroll(){
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
 }
+
+/* ═══════════════════════════════════════════════
+   CASE STUDY MODAL
+═══════════════════════════════════════════════ */
+function openCase(){
+  const o=document.getElementById('caseOverlay');
+  o.classList.add('open');
+  document.body.style.overflow='hidden';
+  o.querySelector('.case-close').focus();
+}
+function closeCase(){
+  document.getElementById('caseOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase()});
 
 /* ═══════════════════════════════════════════════
    BOOT EVERYTHING
