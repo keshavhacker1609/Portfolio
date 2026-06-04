@@ -557,6 +557,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .csm:nth-child(even) .csm-n{color:var(--v)}
 .csm-l{font-family:var(--mn);font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--tm);margin-top:8px;line-height:1.4}
 .case-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--bv)}
+/* Teal-accent variant (security cases) */
+.caseT{border-color:var(--b);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(0,245,196,.1)}
+.caseT .case-top{border-bottom-color:var(--b)}
+.caseT .ct-id,.caseT .case-close{color:var(--t)}
+.caseT .case-close{border-color:var(--b)}
+.caseT .case-close:hover{background:rgba(0,245,196,.12);box-shadow:var(--gt)}
+.caseT .case-h1 + .case-lede,.caseT .case-meta .chip{border-color:rgba(0,245,196,.25);color:var(--t)}
+.caseT .case-cta{border-top-color:var(--b)}
+.caseT .csm:nth-child(even){border-color:var(--b)}
+.caseT .csm:nth-child(even) .csm-n{color:var(--t)}
 @media(max-width:700px){
   .case-body{padding:24px 22px 32px}
   .arch-row{flex-direction:column}
@@ -742,7 +752,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="ph">
           <div class="pbd"><span class="bdg bv2">OPEN SOURCE</span><span class="bdg bv2">RESEARCH</span></div>
           <div class="pln">
-            <button type="button" class="bp" style="font-size:.66rem;padding:10px 18px" onclick="openCase()">↳ READ CASE STUDY</button>
+            <button type="button" class="bp" style="font-size:.66rem;padding:10px 18px" onclick="openCase('obscura')">↳ READ CASE STUDY</button>
             <a href="https://github.com/keshavhacker1609/ObscuraAI" target="_blank" rel="noopener" class="bv">GitHub ↗</a>
           </div>
         </div>
@@ -768,6 +778,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="ph">
           <div class="pbd"><span class="bdg bt2">PRODUCTION</span><span class="bdg bg2">GOVTECH</span></div>
           <div class="pln">
+            <button type="button" class="bo" style="font-size:.66rem;padding:10px 18px" onclick="openCase('autojustice')">↳ READ CASE STUDY</button>
             <a href="https://keshavsingla16-autojustice-ai-nexus.hf.space/" target="_blank" rel="noopener" class="bp">Live Demo ↗</a>
           </div>
         </div>
@@ -1046,7 +1057,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- ════════ CASE STUDY MODAL — ObscuraAI ════════ -->
 <div id="caseOverlay" onclick="if(event.target===this)closeCase()">
-  <article class="case" role="dialog" aria-modal="true" aria-label="ObscuraAI case study">
+  <article class="case" data-case="obscura" role="dialog" aria-modal="true" aria-label="ObscuraAI case study">
     <div class="case-top">
       <span class="ct-id">CASE STUDY · 01 · OBSCURA-AI · PRIVACY-PRESERVING ML</span>
       <button class="case-close" onclick="closeCase()" aria-label="Close">✕</button>
@@ -1138,6 +1149,104 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <div class="case-cta">
         <a href="https://github.com/keshavhacker1609/ObscuraAI" target="_blank" rel="noopener" class="bp">View Source on GitHub ↗</a>
         <a href="#research" class="bv" onclick="closeCase()">Read the Paper Abstract →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- ──── AutoJustice AI NEXUS case ──── -->
+  <article class="case caseT" data-case="autojustice" style="display:none" role="dialog" aria-modal="true" aria-label="AutoJustice AI case study">
+    <div class="case-top">
+      <span class="ct-id">CASE STUDY · 02 · AUTOJUSTICE-AI-NEXUS · GOVTECH / PRODUCTION</span>
+      <button class="case-close" onclick="closeCase()" aria-label="Close">✕</button>
+    </div>
+    <div class="case-body">
+      <div class="case-hero-tag" style="color:var(--t)">[ FIR AUTOMATION · ASYNC AI PIPELINE · LEGAL-COMPLIANT BY DESIGN ]</div>
+      <h1 class="case-h1">AutoJustice AI NEXUS — Turning a Paper Bottleneck into a Production Justice Platform</h1>
+      <p class="case-lede">In India, a delayed FIR (First Information Report) means delayed justice. The documentation burden on officers is a real chokepoint at the very first step of a case. AutoJustice automates FIR generation with AI triage and OCR — engineered from the ground up to satisfy <strong>Indian digital-evidence and privacy law</strong>, not bolt it on afterward.</p>
+      <div class="case-meta">
+        <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Redis + Celery</span><span class="chip">Gemini API</span><span class="chip">Tesseract OCR</span><span class="chip">Docker + NGINX</span>
+      </div>
+
+      <!-- PROBLEM -->
+      <div class="cs-block">
+        <div class="cs-kicker">01 — The Problem</div>
+        <p class="cs-p">Filing an FIR is manual, slow, and inconsistent. An officer transcribes a complaint, classifies it under the right legal sections, and assesses severity — by hand, under load. That latency delays case registration and, downstream, access to justice itself.</p>
+        <p class="cs-p">A naïve "ChatGPT for FIRs" fails instantly in this domain: anything touching legal evidence must respect <strong>Section 65B of the Indian Evidence Act</strong>, the <strong>DPDP Act</strong> for citizen data, and current <strong>BNS/IPC</strong> formatting. The hard part isn't generating text — it's generating <em>legally admissible, auditable</em> text at production reliability.</p>
+      </div>
+
+      <!-- APPROACH -->
+      <div class="cs-block">
+        <div class="cs-kicker">02 — The Approach</div>
+        <p class="cs-p">Treat FIR generation as an <strong>asynchronous, multi-stage pipeline</strong> rather than one blocking request — so OCR and AI inference never freeze the officer's UI:</p>
+        <ul class="cs-list">
+          <li><strong>Ingest.</strong> Physical documents are digitized through a <strong>Tesseract OCR</strong> pipeline; complaints enter a queue rather than a synchronous call.</li>
+          <li><strong>Triage.</strong> The <strong>Gemini API</strong> categorizes each case and scores severity, suggesting the relevant legal sections for officer review — assist, not replace.</li>
+          <li><strong>Process async.</strong> <strong>Celery + Redis</strong> run heavy work off the request thread; <strong>PostgreSQL</strong> holds case state with real-time status tracking.</li>
+          <li><strong>Comply.</strong> Output is formatted for Section 65B / DPDP / BNS-IPC from the start, so the document is admissible by construction.</li>
+        </ul>
+      </div>
+
+      <!-- ARCHITECTURE -->
+      <div class="cs-block">
+        <div class="cs-kicker">03 — System Architecture</div>
+        <div class="arch">
+          <div class="arch-stage">
+            <span class="arch-tag at-in">Input</span>
+            <div class="arch-name">Complaint + Document Intake</div>
+            <div class="arch-desc">Tesseract OCR digitizes physical evidence → request queued (non-blocking)</div>
+          </div>
+          <div class="arch-flow">↓</div>
+          <div class="arch-row">
+            <div class="arch-stage">
+              <span class="arch-tag at-audit">Async Workers</span>
+              <div class="arch-name">Celery + Redis</div>
+              <div class="arch-desc">Offloads OCR + AI inference from the request thread</div>
+            </div>
+            <div class="arch-stage">
+              <span class="arch-tag at-mit">AI Triage</span>
+              <div class="arch-name">Gemini API</div>
+              <div class="arch-desc">Case categorization · severity scoring · section suggestion</div>
+            </div>
+            <div class="arch-stage">
+              <span class="arch-tag at-rep">Compliance Layer</span>
+              <div class="arch-name">Section 65B · DPDP · BNS/IPC</div>
+              <div class="arch-desc">Legally-admissible FIR formatting by construction</div>
+            </div>
+          </div>
+          <div class="arch-flow">↓</div>
+          <div class="arch-stage">
+            <span class="arch-tag at-in">Surface + Deploy</span>
+            <div class="arch-name">FastAPI · PostgreSQL · Docker + NGINX</div>
+            <div class="arch-desc">Real-time case status tracking · containerized production deployment</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="cs-block">
+        <div class="cs-kicker">04 — Outcome</div>
+        <div class="cs-results">
+          <div class="csm"><div class="csm-n">Live</div><div class="csm-l">Deployed on Hugging Face Spaces</div></div>
+          <div class="csm"><div class="csm-n">Async</div><div class="csm-l">Non-blocking Celery Pipeline</div></div>
+          <div class="csm"><div class="csm-n">3 Laws</div><div class="csm-l">65B · DPDP · BNS/IPC Compliant</div></div>
+          <div class="csm"><div class="csm-n">HackSecure X</div><div class="csm-l">Cleared Initial Rounds · Intl 2026</div></div>
+        </div>
+        <p class="cs-p" style="margin-top:18px">What began as "a basic HTML form" matured into a <strong>containerized, production-grade platform</strong> deployed behind NGINX. The architecture choice that mattered most: making the pipeline <strong>asynchronous</strong> — it's the difference between a demo that hangs on a large document and a system an officer can actually rely on under real caseload.</p>
+      </div>
+
+      <!-- DECISIONS -->
+      <div class="cs-block">
+        <div class="cs-kicker">05 — Why These Engineering Decisions</div>
+        <ul class="cs-list">
+          <li><strong>Async-first, not request-blocking.</strong> OCR + LLM inference are slow and variable. Celery/Redis keep the officer's interface responsive while heavy work runs in the background — production reliability over demo simplicity.</li>
+          <li><strong>AI assists, the officer decides.</strong> Gemini <em>suggests</em> categorization and sections; a human confirms. In a justice system, an unsupervised model making legal determinations is a non-starter — the design keeps accountability human.</li>
+          <li><strong>Compliance as a build constraint.</strong> Section 65B / DPDP formatting is baked into the output layer, not patched in later. Admissibility can't be retrofitted onto evidence.</li>
+        </ul>
+      </div>
+
+      <div class="case-cta">
+        <a href="https://keshavsingla16-autojustice-ai-nexus.hf.space/" target="_blank" rel="noopener" class="bp">Open Live Demo ↗</a>
+        <a href="#projects" class="bo" onclick="closeCase()">Back to Projects →</a>
       </div>
     </div>
   </article>
@@ -1469,11 +1578,16 @@ function initNavScroll(){
 /* ═══════════════════════════════════════════════
    CASE STUDY MODAL
 ═══════════════════════════════════════════════ */
-function openCase(){
+function openCase(which){
+  which=which||'obscura';
   const o=document.getElementById('caseOverlay');
+  // Show only the requested case article
+  o.querySelectorAll('.case').forEach(c=>{c.style.display=(c.dataset.case===which)?'block':'none'});
   o.classList.add('open');
+  o.scrollTop=0;
   document.body.style.overflow='hidden';
-  o.querySelector('.case-close').focus();
+  const active=o.querySelector('.case[data-case="'+which+'"]');
+  if(active){active.scrollIntoView({block:'start'});active.querySelector('.case-close').focus()}
 }
 function closeCase(){
   document.getElementById('caseOverlay').classList.remove('open');
