@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Keshav Singla · AI/ML Engineer | Privacy-Preserving & Secure ML</title>
+<meta name="description" content="Keshav Singla — AI/ML Engineer specializing in Trustworthy, Privacy-Preserving & Secure ML. B.Tech CSE @ SRM IST Chennai, Class of 2028. Auditing models for privacy leakage, defending against adversarial attacks, building production AI."/>
+<meta name="author" content="Keshav Singla"/>
+<meta name="keywords" content="Keshav Singla, AI ML Engineer, Privacy-Preserving Machine Learning, Adversarial ML, Trustworthy AI, AI Safety, SRM IST, Face Recognition Privacy, FastAPI, PyTorch, Machine Learning Researcher India"/>
+<meta name="theme-color" content="#0a0a0f"/>
+<meta name="robots" content="index, follow"/>
+<!-- Open Graph (LinkedIn / Facebook preview) -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Keshav Singla · AI/ML Engineer"/>
+<meta property="og:description" content="Building ML systems that are accurate — and also private, fair, and secure. Trustworthy & Privacy-Preserving ML · SRM IST '28."/>
+<meta property="og:image" content="photo.png"/>
+<meta property="og:image:alt" content="Keshav Singla"/>
+<meta property="og:site_name" content="Keshav Singla — Portfolio"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Keshav Singla · AI/ML Engineer"/>
+<meta name="twitter:description" content="Building ML systems that are accurate — and also private, fair, and secure."/>
+<meta name="twitter:image" content="photo.png"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0a0f'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='800' text-anchor='middle' fill='%2300f5c4'%3EKS%3C/text%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" href="photo.png"/>
+<!-- JSON-LD: Person structured data for Google -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Keshav Singla",
+  "jobTitle":"AI/ML Engineer — Privacy-Preserving & Secure ML",
+  "email":"mailto:keshavsingla940@gmail.com",
+  "telephone":"+91-8094496564",
+  "image":"photo.png",
+  "address":{"@type":"PostalAddress","addressLocality":"Chennai","addressRegion":"Tamil Nadu","addressCountry":"India"},
+  "alumniOf":{"@type":"CollegeOrUniversity","name":"SRM Institute of Science and Technology, Kattankulathur"},
+  "knowsAbout":["Privacy-Preserving Machine Learning","Adversarial Machine Learning","Trustworthy AI","Face Recognition Privacy","AI Safety","Backend Engineering","FastAPI","PyTorch"],
+  "sameAs":[
+    "https://github.com/keshavhacker1609",
+    "https://www.linkedin.com/in/keshavsingla1609"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+/* ── VARIABLES ─────────────────────────────────────── */
+:root{
+  --bg:#0a0a0f;
+  --bg2:#0f0f1a;
+  --bgc:#12121f;
+  --t:#00f5c4;
+  --v:#a855f7;
+  --tp:#e8e8f0;
+  --ts:#8888aa;
+  --tm:#444466;
+  --b:rgba(0,245,196,.15);
+  --bv:rgba(168,85,247,.15);
+  --gt:0 0 24px rgba(0,245,196,.35);
+  --gv:0 0 24px rgba(168,85,247,.35);
+  --hd:'Syne',sans-serif;
+  --mn:'JetBrains Mono',monospace;
+  --ui:'Space Grotesk',sans-serif;
+}
+/* ── RESET ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tp);font-family:var(--mn);overflow-x:hidden;cursor:none;line-height:1.6}
+body.booting{overflow:hidden}
+a{color:var(--t);text-decoration:none;transition:color .2s}
+a:hover{color:#fff}
+::selection{background:rgba(0,245,196,.18);color:#fff}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--t);border-radius:2px}
+
+/* ── SCANLINE ──────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);
+  pointer-events:none;z-index:9990;
+}
+
+/* ── CURSOR ────────────────────────────────────────── */
+#cur{position:fixed;width:18px;height:18px;border:1.5px solid var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s;mix-blend-mode:screen}
+#cdot{position:fixed;width:4px;height:4px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
+.cp{position:fixed;border-radius:50%;pointer-events:none;z-index:9997;background:var(--t);transform:translate(-50%,-50%)}
+
+/* ── BOOT ──────────────────────────────────────────── */
+#boot{
+  position:fixed;inset:0;background:var(--bg);z-index:10000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .7s;
+}
+#boot.gone{opacity:0;pointer-events:none}
+.bt{
+  width:min(620px,92vw);
+  border:1px solid var(--t);background:rgba(0,245,196,.02);
+  border-radius:6px;padding:28px 30px;box-shadow:var(--gt);
+}
+.bb{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--b)}
+.bd{width:10px;height:10px;border-radius:50%}
+.bd:nth-child(1){background:#ff5f56}.bd:nth-child(2){background:#ffbd2e}.bd:nth-child(3){background:#27c93f}
+.bb span{margin-left:8px;font-size:.7rem;color:var(--tm);font-family:var(--mn)}
+#blines{min-height:150px}
+.bl{font-family:var(--mn);font-size:.8rem;color:var(--t);line-height:2;opacity:0;display:block;white-space:pre}
+.bl.on{opacity:1}
+.bl.warn{color:#ffbd2e}
+.bl.ok{color:#27c93f;font-weight:600}
+#skip{position:fixed;bottom:24px;right:24px;font-family:var(--mn);font-size:.7rem;color:var(--tm);border:1px solid var(--tm);padding:5px 14px;border-radius:3px;cursor:pointer;background:transparent;z-index:10001;transition:color .2s,border-color .2s}
+#skip:hover{color:var(--t);border-color:var(--t)}
+
+/* ── NAV ───────────────────────────────────────────── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:15px 44px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,10,15,.88);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--b);
+}
+.nl{font-family:var(--hd);font-size:1.1rem;font-weight:800;letter-spacing:2px;color:var(--t)}
+.nl span{color:var(--tm)}
+.na{display:flex;align-items:center;gap:28px}
+.na a{font-family:var(--mn);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--ts);transition:color .2s}
+.na a:hover,.na a.act{color:var(--t)}
+.ns{display:flex;align-items:center;gap:8px;font-family:var(--mn);font-size:.66rem;color:var(--ts)}
+.sd{width:7px;height:7px;border-radius:50%;background:#27c93f;animation:pg 2s ease-in-out infinite}
+#hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+#hbg span{display:block;width:22px;height:2px;background:var(--tp);transition:all .3s}
+
+/* ── HERO ──────────────────────────────────────────── */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 44px 60px;overflow:hidden}
+#hc{position:absolute;inset:0;z-index:0}
+#mc{position:absolute;inset:0;z-index:0;opacity:.08;pointer-events:none}
+.hi{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
+.hl{}
+.hsl{font-family:var(--mn);font-size:.68rem;letter-spacing:3px;color:var(--t);margin-bottom:16px;text-transform:uppercase}
+.hn{font-family:var(--hd);font-size:clamp(3rem,7vw,5.4rem);font-weight:800;line-height:.95;letter-spacing:-1px;color:#fff;display:inline-block}
+.hn.glitch{animation:glitch 4s infinite linear alternate-reverse}
+.hr{font-family:var(--mn);font-size:clamp(.88rem,1.8vw,1.1rem);color:var(--v);margin-top:16px;height:26px;display:flex;align-items:center;gap:8px}
+.rp{color:var(--tm)}
+#rt::after{content:'|';animation:blink .7s step-end infinite;color:var(--t)}
+.ho{font-family:var(--ui);font-size:.96rem;color:var(--ts);max-width:530px;margin-top:18px;line-height:1.85}
+.hcta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hso{display:flex;align-items:center;gap:22px;margin-top:26px}
+.sl{display:flex;align-items:center;gap:8px;font-family:var(--mn);font-size:.7rem;color:var(--ts);transition:color .2s}
+.sl:hover{color:var(--t)}
+.sl svg{width:16px;height:16px;fill:currentColor}
+
+/* Buttons */
+.bp{font-family:var(--mn);font-size:.73rem;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--t);border:1px solid var(--t);padding:12px 24px;border-radius:3px;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.bp:hover{background:transparent;color:var(--t);box-shadow:var(--gt)}
+.bo{font-family:var(--mn);font-size:.73rem;letter-spacing:2px;text-transform:uppercase;color:var(--t);background:transparent;border:1px solid var(--t);padding:12px 24px;border-radius:3px;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.bo:hover{background:rgba(0,245,196,.07);box-shadow:var(--gt)}
+.bv{font-family:var(--mn);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--v);background:transparent;border:1px solid var(--v);padding:10px 20px;border-radius:3px;cursor:pointer;transition:all .25s;text-decoration:none;display:inline-block}
+.bv:hover{background:rgba(168,85,247,.07);box-shadow:var(--gv)}
+
+/* Hex */
+.hrgt{display:flex;flex-direction:column;align-items:center;position:relative}
+.hxc{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+.hxf{width:230px;height:230px;position:relative}
+.hxi{
+  width:100%;height:100%;
+  border-radius:50%;
+  overflow:hidden;
+  background:linear-gradient(135deg,rgba(0,245,196,.09),rgba(168,85,247,.09));
+  border:2px solid rgba(0,245,196,.35);
+  box-shadow:0 0 30px rgba(0,245,196,.2),inset 0 0 30px rgba(168,85,247,.08);
+  display:flex;align-items:center;justify-content:center;
+}
+.hxl{font-family:var(--hd);font-size:3.8rem;font-weight:800;background:linear-gradient(135deg,var(--t),var(--v));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hxpic{width:100%;height:100%;object-fit:cover;display:block}
+.hr1{position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(0,245,196,.25);animation:spin 12s linear infinite}
+.hr2{position:absolute;inset:-34px;border-radius:50%;border:1px dashed rgba(168,85,247,.18);animation:spin 22s linear infinite reverse}
+.fbs{position:absolute;inset:0;pointer-events:none}
+.fb{position:absolute;font-family:var(--mn);font-size:.58rem;letter-spacing:1px;padding:4px 10px;border-radius:100px;background:var(--bgc);border:1px solid var(--b);color:var(--t);animation:fy 4s ease-in-out infinite;white-space:nowrap}
+.fb:nth-child(1){top:-10px;left:-30px;animation-delay:0s}
+.fb:nth-child(2){top:28%;right:-40px;animation-delay:.8s;color:var(--v);border-color:var(--bv)}
+.fb:nth-child(3){bottom:28%;left:-50px;animation-delay:1.6s}
+.fb:nth-child(4){bottom:2%;right:-30px;animation-delay:2.4s;color:var(--v);border-color:var(--bv)}
+.fb:nth-child(5){top:55%;left:-60px;animation-delay:3.2s}
+
+/* ── SECTION COMMONS ───────────────────────────────── */
+.sec{padding:100px 44px;max-width:1200px;margin:0 auto}
+.sec-bg{padding:100px 44px;background:var(--bg2)}
+.sec-bg .inn{max-width:1200px;margin:0 auto}
+.lbl{font-family:var(--mn);font-size:.66rem;letter-spacing:4px;text-transform:uppercase;color:var(--t);margin-bottom:12px}
+.ttl{font-family:var(--hd);font-size:clamp(1.8rem,4vw,2.9rem);font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:8px}
+.ttl .ta{color:var(--t)}
+.ttl .va{color:var(--v)}
+.sub{font-family:var(--mn);font-size:.78rem;color:var(--tm);margin-bottom:56px}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ── ABOUT ─────────────────────────────────────────── */
+#about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;padding:100px 44px;max-width:1200px;margin:0 auto}
+.aq{font-family:var(--hd);font-size:clamp(1.5rem,3vw,2.6rem);font-weight:800;font-style:italic;color:var(--t);line-height:1.2;position:sticky;top:120px}
+.aq::before{content:'"';font-size:5rem;line-height:.3;display:block;opacity:.15;margin-bottom:16px}
+.ab{font-family:var(--ui);font-size:.93rem;color:var(--ts);line-height:1.9}
+.ab p+p{margin-top:14px}
+.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 14px;margin-top:38px;border-top:1px solid var(--b);padding-top:30px}
+.si{text-align:center}
+.sn{font-family:var(--hd);font-size:1.75rem;font-weight:800;color:var(--t);display:block}
+.sk{font-family:var(--mn);font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);margin-top:4px;display:block}
+
+/* ── SKILLS ────────────────────────────────────────── */
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:44px}
+.sp{background:var(--bgc);border:1px solid var(--b);border-radius:8px;padding:30px}
+.sp.vp{border-color:var(--bv)}
+.spt{font-family:var(--mn);font-size:.68rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:26px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%}
+.dt{background:var(--t)}.dv{background:var(--v)}
+.ski{margin-bottom:16px}
+.skr{display:flex;justify-content:space-between;font-family:var(--mn);font-size:.73rem;color:var(--ts);margin-bottom:5px}
+.sp{} .skp{color:var(--t)}.vp .skp{color:var(--v)}
+.skt{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.skf{height:100%;width:0;border-radius:2px;background:var(--t);transition:width 1s cubic-bezier(.17,.67,.3,1.1)}
+.vp .skf{background:var(--v)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{font-family:var(--mn);font-size:.63rem;letter-spacing:.5px;color:var(--ts);border:1px solid var(--b);padding:5px 12px;border-radius:100px;transition:all .2s;cursor:default}
+.tag:hover{color:var(--t);border-color:rgba(0,245,196,.4);background:rgba(0,245,196,.04)}
+
+/* ── PROJECTS ──────────────────────────────────────── */
+#projects{padding:100px 44px}
+#projects .inn{max-width:1200px;margin:0 auto}
+.pg{display:flex;flex-direction:column;gap:28px}
+.pc{
+  background:var(--bgc);border:1px solid var(--b);
+  border-radius:10px;padding:38px;position:relative;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s,transform .3s;
+}
+.pc:hover{transform:translateY(-4px)}
+.pc.tc:hover{border-color:rgba(0,245,196,.4);box-shadow:var(--gt)}
+.pc.vc:hover{border-color:rgba(168,85,247,.4);box-shadow:var(--gv)}
+.pc.sc:hover{border-color:rgba(168,85,247,.3);box-shadow:0 0 28px rgba(0,245,196,.12),0 0 28px rgba(168,85,247,.12)}
+.pnum{position:absolute;right:28px;top:14px;font-family:var(--hd);font-size:5.5rem;font-weight:800;color:rgba(255,255,255,.022);line-height:1;pointer-events:none;user-select:none}
+.ph{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.pbd{display:flex;gap:8px;flex-wrap:wrap}
+.bdg{font-family:var(--mn);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+.bt2{background:rgba(0,245,196,.08);color:var(--t);border:1px solid rgba(0,245,196,.28)}
+.bv2{background:rgba(168,85,247,.08);color:var(--v);border:1px solid rgba(168,85,247,.28)}
+.bo2{background:rgba(255,165,0,.08);color:#ffaa44;border:1px solid rgba(255,165,0,.28)}
+.bg2{background:rgba(39,201,63,.08);color:#27c93f;border:1px solid rgba(39,201,63,.28)}
+.pln{display:flex;gap:10px;flex-wrap:wrap}
+.pt{font-family:var(--hd);font-size:clamp(1.05rem,2vw,1.42rem);font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
+.ptg{font-family:var(--mn);font-size:.76rem;color:var(--t);margin-bottom:14px}
+.vc .ptg{color:var(--v)}
+.pd{font-family:var(--ui);font-size:.88rem;color:var(--ts);line-height:1.8;margin-bottom:18px}
+.ps{margin-bottom:16px}
+.psi{font-family:var(--mn);font-size:.7rem;color:var(--ts);padding:2px 0;display:flex;align-items:flex-start;gap:8px}
+.psi::before{content:'▸';color:var(--t);flex-shrink:0}
+.vc .psi::before{color:var(--v)}
+.pstk{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:var(--mn);font-size:.6rem;letter-spacing:.5px;color:var(--tm);border:1px solid rgba(255,255,255,.07);padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.02)}
+/* Pipeline */
+.pipe{display:flex;flex-direction:column;gap:6px;margin:14px 0}
+.pl{display:flex;align-items:center;gap:12px;font-family:var(--mn);font-size:.7rem;color:var(--ts)}
+.ln{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:600;flex-shrink:0}
+.lt{background:rgba(0,245,196,.08);color:var(--t);border:1px solid rgba(0,245,196,.28)}
+.lv{background:rgba(168,85,247,.08);color:var(--v);border:1px solid rgba(168,85,247,.28)}
+.lcon{width:2px;height:7px;background:linear-gradient(to bottom,rgba(0,245,196,.3),rgba(168,85,247,.3));margin-left:13px}
+
+/* ── EXPERIENCE ────────────────────────────────────── */
+.tl{position:relative;padding-left:38px;margin-top:50px}
+.tl::before{content:'';position:absolute;left:0;top:0;width:2px;height:0;background:linear-gradient(to bottom,var(--t),var(--v));transition:height 1.6s ease}
+.tl.drawn::before{height:100%}
+.ti{position:relative;margin-bottom:44px;padding-bottom:8px}
+.ti::before{content:'';position:absolute;left:-45px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--t);border:2px solid var(--bg2);box-shadow:0 0 10px rgba(0,245,196,.5)}
+.ti:nth-child(even)::before{background:var(--v);box-shadow:0 0 10px rgba(168,85,247,.5)}
+.td{font-family:var(--mn);font-size:.66rem;letter-spacing:2px;color:var(--t);text-transform:uppercase;margin-bottom:5px}
+.ti:nth-child(even) .td{color:var(--v)}
+.tr{font-family:var(--hd);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:2px}
+.tc2{font-family:var(--ui);font-size:.83rem;color:var(--ts);margin-bottom:9px}
+.ttype{display:inline-block;font-family:var(--mn);font-size:.58rem;letter-spacing:1.5px;color:var(--t);border:1px solid rgba(0,245,196,.3);padding:2px 8px;border-radius:3px;margin-bottom:11px}
+.tds{font-family:var(--ui);font-size:.86rem;color:var(--ts);line-height:1.8;margin-bottom:11px}
+.ttags{display:flex;flex-wrap:wrap;gap:7px}
+.ttag{font-family:var(--mn);font-size:.58rem;letter-spacing:.5px;color:var(--tm);border:1px solid rgba(255,255,255,.06);padding:2px 9px;border-radius:100px}
+
+/* ── CERTS ─────────────────────────────────────────── */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.cc{background:var(--bgc);border:1px solid var(--b);border-radius:8px;padding:22px;position:relative;overflow:hidden;transition:all .3s}
+.cc.vcc{border-color:var(--bv)}
+.cc:hover{transform:translateY(-3px)}
+.cc.tcc:hover{box-shadow:var(--gt);border-color:rgba(0,245,196,.4)}
+.cc.vcc:hover{box-shadow:var(--gv);border-color:rgba(168,85,247,.4)}
+.ci{width:38px;height:38px;border-radius:8px;background:rgba(0,245,196,.06);border:1px solid rgba(0,245,196,.18);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.1rem}
+.vcc .ci{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.18)}
+.ctt{font-family:var(--ui);font-size:.85rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.4}
+.cm{font-family:var(--mn);font-size:.63rem;color:var(--t);letter-spacing:1px;margin-bottom:9px}
+.vcc .cm{color:var(--v)}
+.csk{display:flex;flex-wrap:wrap;gap:5px}
+.csk span{font-family:var(--mn);font-size:.58rem;color:var(--tm);border:1px solid rgba(255,255,255,.06);padding:2px 8px;border-radius:100px}
+.cwm{position:absolute;right:12px;bottom:8px;font-family:var(--hd);font-size:3rem;font-weight:800;color:rgba(0,245,196,.03);pointer-events:none}
+
+/* ── ACHIEVEMENTS ──────────────────────────────────── */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
+.ac{background:var(--bgc);border:1px solid var(--b);border-radius:10px;padding:30px;position:relative;overflow:hidden;transition:all .3s}
+.ac:hover{box-shadow:var(--gt);border-color:rgba(0,245,196,.4);transform:translateY(-3px)}
+.ar{font-family:var(--hd);font-size:2.4rem;font-weight:800;color:var(--t);margin-bottom:4px;line-height:1}
+.ae{font-family:var(--hd);font-size:1.08rem;font-weight:700;color:#fff;margin-bottom:7px}
+.apr{font-family:var(--mn);font-size:.7rem;color:var(--v);letter-spacing:1px;margin-bottom:11px}
+.am{font-family:var(--ui);font-size:.8rem;color:var(--ts);line-height:1.7}
+.apz{margin-top:11px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mn);font-size:.7rem;color:#27c93f;border:1px solid rgba(39,201,63,.3);padding:3px 12px;border-radius:100px}
+.abg{position:absolute;right:-8px;bottom:-8px;font-size:4.5rem;opacity:.04;pointer-events:none}
+
+/* ── RESEARCH ──────────────────────────────────────── */
+.arxiv{background:var(--bgc);border:1px solid var(--bv);border-radius:10px;padding:38px;position:relative;overflow:hidden;transition:box-shadow .3s}
+.arxiv:hover{box-shadow:var(--gv)}
+.axhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:10px}
+.axid{font-family:var(--mn);font-size:.66rem;letter-spacing:2px;color:var(--v)}
+.axst{font-family:var(--mn);font-size:.63rem;letter-spacing:1.5px;color:#ffaa44;border:1px solid rgba(255,170,68,.4);padding:4px 12px;border-radius:3px;background:rgba(255,170,68,.05);animation:pstat 3s ease-in-out infinite}
+.axt{font-family:var(--hd);font-size:clamp(1rem,2vw,1.32rem);font-weight:700;color:#fff;line-height:1.4;margin-bottom:18px}
+.axa{font-family:var(--mn);font-size:.7rem;color:var(--ts);margin-bottom:5px}
+.axi{font-family:var(--mn);font-size:.68rem;color:var(--t);margin-bottom:18px}
+.axal{font-family:var(--mn);font-size:.63rem;letter-spacing:3px;text-transform:uppercase;color:var(--tm);margin-bottom:9px}
+.axab{font-family:var(--ui);font-size:.87rem;color:var(--ts);line-height:1.9}
+.axkw{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.kw{font-family:var(--mn);font-size:.6rem;color:var(--v);border:1px solid rgba(168,85,247,.3);padding:3px 10px;border-radius:100px;background:rgba(168,85,247,.04)}
+.axbg{position:absolute;right:-15px;top:50%;transform:translateY(-50%);font-family:var(--hd);font-size:9rem;font-weight:800;color:rgba(168,85,247,.02);pointer-events:none;user-select:none}
+
+/* ── CONTACT ───────────────────────────────────────── */
+.cog{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.coa{font-family:var(--hd);font-size:clamp(1.3rem,2.8vw,2.1rem);font-weight:800;line-height:1.4;color:var(--ts);position:sticky;top:120px}
+.coa .sig{font-family:var(--mn);font-size:.72rem;letter-spacing:3px;color:var(--t);display:block;margin-bottom:14px}
+.coa em{color:#fff;font-style:normal}
+.avb{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--mn);font-size:.63rem;letter-spacing:1.5px;color:#27c93f;border:1px solid rgba(39,201,63,.3);padding:8px 16px;border-radius:100px;background:rgba(39,201,63,.04)}
+.avd{width:8px;height:8px;border-radius:50%;background:#27c93f;animation:pg 2s ease-in-out infinite}
+.cf{display:flex;flex-direction:column;gap:14px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fl{font-family:var(--mn);font-size:.63rem;letter-spacing:2px;text-transform:uppercase;color:var(--tm)}
+.fi,.ft{background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:5px;padding:11px 15px;color:var(--tp);font-family:var(--mn);font-size:.8rem;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;width:100%}
+.fi:focus,.ft:focus{border-color:rgba(0,245,196,.4);box-shadow:0 0 10px rgba(0,245,196,.07)}
+.ft{min-height:110px}
+.clinks{display:flex;flex-direction:column;gap:11px;margin-top:26px;padding-top:26px;border-top:1px solid var(--b)}
+.cli{display:flex;align-items:center;gap:12px;font-family:var(--mn);font-size:.76rem;color:var(--ts);transition:color .2s}
+.cli:hover{color:var(--t)}
+.cll{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tm);width:66px;flex-shrink:0}
+
+/* ── FOOTER ────────────────────────────────────────── */
+footer{background:var(--bg);border-top:1px solid var(--b);padding:36px 44px;text-align:center}
+.fn{font-family:var(--hd);font-size:1rem;font-weight:800;letter-spacing:3px;color:var(--ts);margin-bottom:7px}
+.fs{font-family:var(--mn);font-size:.68rem;color:var(--tm);letter-spacing:1px;margin-bottom:5px}
+
+/* ── KEYFRAMES ─────────────────────────────────────── */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fy{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes pg{0%,100%{box-shadow:0 0 0 0 rgba(39,201,63,.4)}50%{box-shadow:0 0 0 5px rgba(39,201,63,0)}}
+@keyframes pstat{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes glitch{
+  0%,98%{text-shadow:none;transform:none}
+  99%{text-shadow:-2px 0 var(--t),2px 0 var(--v);transform:skewX(-1deg)}
+  100%{text-shadow:2px 0 var(--t),-2px 0 var(--v);transform:skewX(1deg)}
+}
+
+/* ── RESPONSIVE ────────────────────────────────────── */
+/* Restore native cursor on touch devices */
+@media(hover:none),(pointer:coarse){
+  body{cursor:auto}
+  #cur,#cdot{display:none}
+}
+@media(max-width:900px){
+  body{cursor:auto}
+  #cur,#cdot{display:none}
+  #totop{bottom:18px;right:18px;width:40px;height:40px}
+  #nav{padding:13px 20px}
+  .na{display:none;position:fixed;top:58px;left:0;right:0;background:var(--bg2);flex-direction:column;gap:0;border-bottom:1px solid var(--b)}
+  .na.open{display:flex}
+  .na a{padding:14px 22px;border-bottom:1px solid var(--b);font-size:.8rem}
+  .ns{display:none}
+  #hbg{display:flex}
+  #hero{padding:80px 20px 50px}
+  .hi{grid-template-columns:1fr;gap:44px}
+  .hrgt{order:-1}
+  .hxc{width:200px;height:200px}
+  .hxf{width:170px;height:170px}
+  #about{display:block;padding:80px 20px}
+  .aq{position:static;margin-bottom:36px;font-size:1.5rem}
+  .sr{grid-template-columns:repeat(2,1fr)}
+  .sec,.sec-bg{padding:80px 20px}
+  .sec-bg .inn{padding:0}
+  .sg{grid-template-columns:1fr;gap:18px}
+  #projects{padding:80px 20px}
+  .pc{padding:26px 22px}
+  .ag{grid-template-columns:1fr}
+  .cog{grid-template-columns:1fr;gap:44px}
+  .coa{position:static}
+  footer{padding:28px 20px}
+}
+@media(max-width:500px){
+  .sr{grid-template-columns:1fr 1fr}
+  .hcta{flex-direction:column}
+  .bp,.bo{text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ── SKIP LINK ─────────────────────────────────────── */
+.skiplink{position:fixed;top:-60px;left:12px;z-index:10002;background:var(--t);color:var(--bg);font-family:var(--mn);font-size:.72rem;padding:8px 16px;border-radius:4px;transition:top .2s}
+.skiplink:focus{top:12px;color:var(--bg)}
+
+/* ── SCROLL PROGRESS BAR ───────────────────────────── */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:1001;background:linear-gradient(90deg,var(--t),var(--v));box-shadow:0 0 8px rgba(0,245,196,.5);transition:width .08s linear}
+
+/* ── BACK TO TOP ───────────────────────────────────── */
+#totop{position:fixed;bottom:24px;right:24px;z-index:999;width:44px;height:44px;border-radius:50%;border:1px solid var(--b);background:rgba(18,18,31,.9);backdrop-filter:blur(8px);color:var(--t);font-size:1.1rem;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .3s,transform .3s,box-shadow .3s}
+#totop.show{opacity:1;pointer-events:auto;transform:none}
+#totop:hover{box-shadow:var(--gt);border-color:rgba(0,245,196,.4)}
+
+/* ── FOCUS VISIBLE (keyboard accessibility) ────────── */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--t);outline-offset:3px;border-radius:2px}
+
+/* ── PRINT ─────────────────────────────────────────── */
+@media print{
+  body{cursor:auto;background:#fff;color:#000}
+  body::before,#boot,#nav,#progress,#totop,#cur,#cdot,#hc,#mc,.skiplink,.fbs,.hr1,.hr2{display:none !important}
+  #main{opacity:1 !important}
+  *{animation:none !important;box-shadow:none !important;text-shadow:none !important}
+  .rv{opacity:1 !important;transform:none !important}
+  section,.sec,.sec-bg{padding:20px !important;page-break-inside:avoid}
+  .pc,.cc,.ac,.arxiv,.ti{border:1px solid #ccc !important;background:#fff !important}
+  a{color:#0a7d63 !important}
+  .ttl,.pt,.tr,.ae,.axt{color:#000 !important}
+}
+</style>
+</head>
+<body class="booting">
+
+<!-- SKIP LINK (accessibility) -->
+<a href="#about" class="skiplink">Skip to content</a>
+
+<!-- SCROLL PROGRESS -->
+<div id="progress"></div>
+
+<!-- BACK TO TOP -->
+<button id="totop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cdot"></div>
+
+<!-- BOOT SEQUENCE -->
+<div id="boot">
+  <div class="bt">
+    <div class="bb">
+      <div class="bd"></div><div class="bd"></div><div class="bd"></div>
+      <span>terminal — keshav@srmist:~$</span>
+    </div>
+    <div id="blines"></div>
+  </div>
+  <button id="skip" onclick="skipBoot()">[ SKIP ]</button>
+</div>
+
+<!-- MAIN PORTFOLIO -->
+<div id="main" style="opacity:0;transition:opacity .8s ease">
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nl">KS<span>.</span></div>
+  <div class="na" id="navlinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+    <a href="Keshav_Singla_Resume.pdf" download style="color:var(--t);border:1px solid var(--b);padding:5px 12px;border-radius:3px">↓ RÉSUMÉ</a>
+  </div>
+  <div class="ns"><div class="sd"></div><span>AVAILABLE · 2026</span></div>
+  <button id="hbg" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hc"></canvas>
+  <canvas id="mc"></canvas>
+  <div class="hi">
+    <div class="hl">
+      <div class="hsl rv">[ SYSTEM ONLINE · Chennai, INDIA ]</div>
+      <h1 class="hn glitch rv d1">KESHAV<br>SINGLA</h1>
+      <div class="hr rv d2">
+        <span class="rp">// </span><span id="rt"></span>
+      </div>
+      <p class="ho rv d3">I sit at the intersection of machine learning and AI safety — auditing models for privacy leakage, defending against adversarial attacks, and engineering AI that holds up under real-world scrutiny.</p>
+      <div class="hcta rv d4">
+        <a href="#projects" class="bp">[ VIEW RESEARCH ]</a>
+        <a href="Keshav_Singla_Resume.pdf" download class="bo">[ ↓ RÉSUMÉ ]</a>
+        <a href="#contact" class="bo">[ CONTACT ]</a>
+      </div>
+      <div class="hso rv d5">
+        <a href="https://github.com/keshavhacker1609" target="_blank" rel="noopener" class="sl">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          keshavhacker1609
+        </a>
+        <a href="https://www.linkedin.com/in/keshavsingla1609" target="_blank" rel="noopener" class="sl">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          keshavsingla1609
+        </a>
+      </div>
+    </div>
+    <div class="hrgt rv d3">
+      <div class="hxc">
+        <div class="hr1"></div>
+        <div class="hr2"></div>
+        <div class="hxf">
+          <div class="hxi">
+            <img src="photo.png" alt="Keshav Singla" class="hxpic" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+            <span class="hxl" style="display:none">KS</span>
+          </div>
+        </div>
+        <div class="fbs">
+          <div class="fb">PyTorch</div>
+          <div class="fb">ObscuraAI</div>
+          <div class="fb">FastAPI</div>
+          <div class="fb">Privacy ML</div>
+          <div class="fb">SRM IST '28</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="aq rv">"The cost of unsafe AI isn't theoretical anymore."</div>
+  <div>
+    <div class="lbl rv">// WHO I AM</div>
+    <h2 class="ttl rv d1">ABOUT <span class="ta">ME</span></h2>
+    <div class="ab rv d2">
+      <p>I'm a 3rd-year CSE undergrad at SRM IST building ML systems at the intersection of accuracy and safety. My work focuses on three areas: auditing models for unintended privacy leakage, defending ML pipelines against adversarial attacks, and engineering AI backends that comply with real-world privacy law (India's DPDP Act, GDPR frameworks).</p>
+      <p>I recently completed a backend engineering internship at EvoDoc — a HealthTech startup building privacy-first clinical digitization infrastructure. Alongside, I lead technical initiatives as Technical Team Lead at DSA SRMIST and am an active member of CODENEX Club SRMIST.</p>
+    </div>
+    <div class="sr">
+      <div class="si rv"><span class="sn" data-target="200" data-suffix="K+">0</span><span class="sk">ObscuraAI Samples</span></div>
+      <div class="si rv d1"><span class="sn" data-target="984" data-suffix="%" data-dec="1">0</span><span class="sk">Demographic Parity</span></div>
+      <div class="si rv d2"><span class="sn" data-target="15" data-suffix="+">0</span><span class="sk">Hackathons</span></div>
+      <div class="si rv d3"><span class="sn" data-target="10" data-suffix="+">0</span><span class="sk">Ideathons</span></div>
+      <div class="si rv d4"><span class="sn" data-target="6" data-suffix="">0</span><span class="sk">Live Projects</span></div>
+      <div class="si rv d5"><span class="sn" data-target="5" data-suffix="+">0</span><span class="sk">Internship Offers</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div id="skills" class="sec-bg">
+  <div class="inn">
+    <div class="lbl rv">// CAPABILITIES</div>
+    <h2 class="ttl rv d1">TECHNICAL <span class="ta">ARSENAL</span></h2>
+    <p class="sub rv d2">[ full-stack AI/ML · security · backend engineering ]</p>
+    <div class="sg">
+      <div class="sp vp rv">
+        <div class="spt"><div class="dot dv"></div><span style="color:var(--v)">AI / ML STACK</span></div>
+        <div class="ski"><div class="skr"><span>PyTorch</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
+        <div class="ski"><div class="skr"><span>TensorFlow</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
+        <div class="ski"><div class="skr"><span>scikit-learn</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
+        <div class="ski"><div class="skr"><span>Hugging Face Transformers</span><span class="skp">65%</span></div><div class="skt"><div class="skf" data-w="65"></div></div></div>
+        <div class="ski"><div class="skr"><span>Adversarial ML</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
+        <div class="ski"><div class="skr"><span>Privacy-Preserving ML</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
+        <div class="ski"><div class="skr"><span>Gemini API</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
+        <div class="ski"><div class="skr"><span>Computer Vision</span><span class="skp">70%</span></div><div class="skt"><div class="skf" data-w="70"></div></div></div>
+      </div>
+      <div class="sp rv d1">
+        <div class="spt"><div class="dot dt"></div><span style="color:var(--t)">SECURITY & BACKEND STACK</span></div>
+        <div class="ski"><div class="skr"><span>Python</span><span class="skp">95%</span></div><div class="skt"><div class="skf" data-w="95"></div></div></div>
+        <div class="ski"><div class="skr"><span>FastAPI</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
+        <div class="ski"><div class="skr"><span>Node.js / Express</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
+        <div class="ski"><div class="skr"><span>PostgreSQL / MongoDB</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
+        <div class="ski"><div class="skr"><span>Redis + Celery</span><span class="skp">70%</span></div><div class="skt"><div class="skf" data-w="70"></div></div></div>
+        <div class="ski"><div class="skr"><span>Linux / Bash</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
+        <div class="ski"><div class="skr"><span>Network Security</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
+        <div class="ski"><div class="skr"><span>Docker / Git</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
+      </div>
+    </div>
+    <div class="tags rv">
+      <span class="tag">React</span><span class="tag">Next.js 14</span><span class="tag">TypeScript</span><span class="tag">Zustand</span><span class="tag">Socket.IO</span><span class="tag">Tesseract OCR</span><span class="tag">C++</span><span class="tag">DSA</span><span class="tag">System Design</span><span class="tag">pgvector</span><span class="tag">Supabase</span><span class="tag">OWASP</span><span class="tag">Threat Modeling</span><span class="tag">DPDP Act</span><span class="tag">GDPR</span><span class="tag">Section 65B</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects">
+  <div class="inn">
+    <div class="lbl rv">// WORK</div>
+    <h2 class="ttl rv d1">RESEARCH &amp; <span class="ta">BUILDS</span></h2>
+    <p class="sub rv d2">[ 6 projects that actually ship ]</p>
+    <div class="pg">
+
+      <!-- 01 ObscuraAI -->
+      <div class="pc vc rv">
+        <div class="pnum">01</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bv2">OPEN SOURCE</span><span class="bdg bv2">RESEARCH</span></div>
+          <div class="pln">
+            <a href="https://github.com/keshavhacker1609/ObscuraAI" target="_blank" rel="noopener" class="bv">GitHub ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">ObscuraAI — Adversarial Demographic Leakage Auditing &amp; Mitigation Framework</h3>
+        <p class="ptg">What does your face recognition model secretly know about you?</p>
+        <p class="pd">A full-stack AI privacy research framework to detect, reduce, and document sensitive demographic attribute leakage in face recognition embedding spaces. Built to address a critical gap: models that are accurate but quietly expose gender, age, and ethnicity through their embeddings.</p>
+        <div class="ps">
+          <div class="psi">200,000 samples audited · <strong style="color:#fff">98.4% demographic parity</strong> post-mitigation</div>
+          <div class="psi">Adversarial audit: LR + MLP attacker models (AUC scoring)</div>
+          <div class="psi">Gradient Reversal Layer (GRL) for adversarial disentanglement (TAR@FAR metric)</div>
+          <div class="psi">Gaussian Noise Injection · IEEE-style Model Cards · Cryptographic Audit Logs</div>
+          <div class="psi">7 publication-quality visualizations · React dashboard with live pipeline monitoring</div>
+        </div>
+        <div class="pstk">
+          <span class="chip">PyTorch</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Recharts</span><span class="chip">scikit-learn</span>
+        </div>
+        <div style="margin-top:12px;font-family:var(--mn);font-size:.63rem;color:var(--tm)">SRM Institute of Science and Technology, Chennai &nbsp;·&nbsp; Keshav Singla + collaborator</div>
+      </div>
+
+      <!-- 02 AutoJustice -->
+      <div class="pc tc rv">
+        <div class="pnum">02</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bt2">PRODUCTION</span><span class="bdg bg2">GOVTECH</span></div>
+          <div class="pln">
+            <a href="https://keshavsingla16-autojustice-ai-nexus.hf.space/" target="_blank" rel="noopener" class="bp">Live Demo ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">AutoJustice AI NEXUS — AI-Powered FIR Automation for Indian Law Enforcement</h3>
+        <p class="ptg">From a basic HTML form to a production AI justice platform.</p>
+        <p class="pd">A production-grade AI platform automating FIR (First Information Report) generation for Indian law enforcement — reducing the manual documentation burden that delays case registration and access to justice. Engineered for full legal compliance with Indian digital evidence and privacy law.</p>
+        <div class="ps">
+          <div class="psi">Async task processing: FastAPI + PostgreSQL + Redis + Celery</div>
+          <div class="psi">AI triage via Gemini API for case categorization and severity scoring</div>
+          <div class="psi">Tesseract OCR pipeline for physical document digitization</div>
+          <div class="psi">Legal compliance: Section 65B (Indian Evidence Act), DPDP Act, BNS/IPC formatting</div>
+          <div class="psi">NGINX + Docker deployment · Real-time case status tracking</div>
+          <div class="psi">Cleared initial rounds — HackSecure X International Hackathon 2026</div>
+        </div>
+        <div class="pstk">
+          <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Celery</span><span class="chip">Gemini API</span><span class="chip">Tesseract OCR</span><span class="chip">Docker</span><span class="chip">NGINX</span>
+        </div>
+      </div>
+
+      <!-- 03 TrustLens -->
+      <div class="pc sc rv">
+        <div class="pnum">03</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bo2">HACKATHON</span><span class="bdg bg2">TOP 4 / 200+</span></div>
+          <div class="pln">
+            <a href="https://github.com/keshavhacker1609/TRUSTLENS" target="_blank" rel="noopener" class="bo">GitHub ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">TrustLens — 5-Layer ML Fraud Detection for Refund Abuse</h3>
+        <p class="ptg" style="color:var(--t)">4th place out of 200+ teams. Sub-400ms verdicts.</p>
+        <p class="pd">AI-powered refund fraud detection for Indian food delivery ecosystems (Zomato, Swiggy, Blinkit, Zepto). Combines a deterministic 5-layer scoring engine with GradientBoostingClassifier (150 estimators) + IsolationForest anomaly detection to deliver sub-400ms real-time fraud verdicts.</p>
+        <div class="pipe">
+          <div class="pl"><div class="ln lt">L1</div><span>Photo Forensics — image manipulation detection</span></div>
+          <div class="lcon"></div>
+          <div class="pl"><div class="ln lv">L2</div><span>Behavioral Biometrics — typing patterns, interaction anomalies</span></div>
+          <div class="lcon"></div>
+          <div class="pl"><div class="ln lt">L3</div><span>User Trust Scoring — historical claim analysis</span></div>
+          <div class="lcon"></div>
+          <div class="pl"><div class="ln lv">L4</div><span>Delivery Verification — geolocation + timing anomalies</span></div>
+          <div class="lcon"></div>
+          <div class="pl"><div class="ln lt">L5</div><span>Graph-Based Network Fraud — collusive cluster detection</span></div>
+        </div>
+        <div class="pstk">
+          <span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">MongoDB</span><span class="chip">React</span><span class="chip">Zustand</span><span class="chip">Socket.IO</span><span class="chip">FastAPI</span><span class="chip">scikit-learn</span><span class="chip">Recharts</span>
+        </div>
+      </div>
+
+      <!-- 04 EduBid -->
+      <div class="pc tc rv">
+        <div class="pnum">04</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bt2">PRODUCTION</span><span class="bdg bo2">HACKATHON WIN</span></div>
+          <div class="pln">
+            <a href="https://edubid.vercel.app/" target="_blank" rel="noopener" class="bp">Live Demo ↗</a>
+            <a href="https://github.com/keshavhacker1609/edubid" target="_blank" rel="noopener" class="bo">GitHub ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">EduBid — India's First Reverse-Auction Education Loan Marketplace</h3>
+        <p class="ptg">Students get AI Trust Scored. Banks compete to offer the lowest interest rate.</p>
+        <p class="pd">A production fintech platform that inverts the traditional loan application model — instead of students approaching banks, banks bid competitively on AI-scored student profiles. Built with Next.js 14 + Supabase, deployed live. Winner of Ideathon 6.0 at SRM University (4th place, ₹3,000 prize).</p>
+        <div class="ps">
+          <div class="psi">Reverse-auction model: banks compete to offer the lowest interest rate</div>
+          <div class="psi">AI Trust Scoring engine for student creditworthiness profiling</div>
+          <div class="psi">Full-stack: Next.js 14 · Supabase · TypeScript · Tailwind CSS</div>
+          <div class="psi">Deployed live on Vercel · Production-ready infrastructure</div>
+        </div>
+        <div class="pstk">
+          <span class="chip">Next.js 14</span><span class="chip">TypeScript</span><span class="chip">Supabase</span><span class="chip">Tailwind CSS</span><span class="chip">Vercel</span>
+        </div>
+      </div>
+
+      <!-- 05 Phantom Protocol -->
+      <div class="pc vc rv">
+        <div class="pnum">05</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bv2">AI SECURITY</span><span class="bdg bv2">OPEN SOURCE</span></div>
+          <div class="pln">
+            <a href="https://github.com/keshavhacker1609/phantom-protocol" target="_blank" rel="noopener" class="bv">GitHub ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">Phantom Protocol — AI Agent Deception Defense Network</h3>
+        <p class="ptg">Detects attacks on AI agents, fakes compliance, and profiles the attacker — in real time.</p>
+        <p class="pd">Security middleware for AI agent systems. When it detects an adversarial request — prompt injection, jailbreaking, identity spoofing, data exfiltration — it does <em>not</em> block it. It <strong style="color:#fff">fakes compliance</strong>. The attacker believes they've compromised the agent while Phantom Protocol profiles their intent, stores behavioral fingerprints in pgvector, and broadcasts threat intelligence across the mesh.</p>
+        <div class="ps">
+          <div class="psi">Multi-turn fake compliance — attacker never touches real data or real agent</div>
+          <div class="psi">Structured intent + methodology extraction via Gemini 1.5 Flash</div>
+          <div class="psi">pgvector behavioral fingerprinting · Collective mesh threat intelligence</div>
+          <div class="psi">Sentinel Engine: Regex + SVM + sentence-transformers + pgvector similarity</div>
+          <div class="psi">&lt;50ms HTTP response latency · Real agent isolated in Docker sandbox</div>
+        </div>
+        <div class="pstk">
+          <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">React</span><span class="chip">Gemini</span><span class="chip">pgvector</span><span class="chip">Redis</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+        </div>
+      </div>
+
+      <!-- 06 Network Security Scanner -->
+      <div class="pc tc rv">
+        <div class="pnum">06</div>
+        <div class="ph">
+          <div class="pbd"><span class="bdg bt2">TOOL</span><span class="bdg bt2">OPEN SOURCE</span></div>
+          <div class="pln">
+            <a href="https://github.com/keshavhacker1609/Network-Security-Scanner" target="_blank" rel="noopener" class="bo">GitHub ↗</a>
+          </div>
+        </div>
+        <h3 class="pt">Network Security Scanner — Python-Based Automated Reconnaissance Tool</h3>
+        <p class="ptg">Automated network recon, service detection, and risk reporting.</p>
+        <p class="pd">A modular Python tool for automated network reconnaissance, open port detection, service identification, and risk analysis. Outputs structured JSON and HTML security reports for threat modeling workflows — designed for clean integration into security pipelines.</p>
+        <div class="ps">
+          <div class="psi">Automated port scanning and service fingerprinting</div>
+          <div class="psi">Risk analysis with structured JSON output</div>
+          <div class="psi">HTML security report generation for threat modeling workflows</div>
+        </div>
+        <div class="pstk">
+          <span class="chip">Python</span><span class="chip">Network Security</span><span class="chip">Threat Modeling</span><span class="chip">JSON/HTML Reporting</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="sec-bg">
+  <div class="inn">
+    <div class="lbl rv">// OPERATIONS</div>
+    <h2 class="ttl rv d1">FIELD <span class="ta">OPERATIONS</span></h2>
+    <p class="sub rv d2">[ where I've deployed ]</p>
+    <div class="tl" id="timeline">
+      <div class="ti rv">
+        <div class="td">Feb 2026 – Mar 2026</div>
+        <div class="tr">Backend Developer Intern</div>
+        <div class="tc2">EvoDoc · HealthTech Startup · Chennai</div>
+        <div class="ttype">Internship · On-site · Completed</div>
+        <p class="tds">Contributed to the backend of EvoDoc — an AI-powered clinical digitization platform building privacy-first patient-doctor workflow infrastructure. Worked on backend components for the platform's healthcare data pipeline.</p>
+        <div class="ttags"><span class="ttag">Back-End Web Development</span><span class="ttag">LLMs</span><span class="ttag">Node.js</span><span class="ttag">Privacy Architecture</span></div>
+      </div>
+      <div class="ti rv d1">
+        <div class="td">Aug 2024 – Dec 2025</div>
+        <div class="tr">Technical Team Lead</div>
+        <div class="tc2">Directorate of Student Affairs, SRMIST (DSA)</div>
+        <div class="ttype">Leadership · On-site</div>
+        <p class="tds">Led technical initiatives for SRM IST's student affairs directorate. Coordinated cross-functional student teams on software projects, managed program creation and delivery, and mentored juniors on technical workflows.</p>
+        <div class="ttags"><span class="ttag">Program Creation</span><span class="ttag">Team Coordination</span><span class="ttag">Project Management</span></div>
+      </div>
+      <div class="ti rv d2">
+        <div class="td">Feb 2026 – Present</div>
+        <div class="tr">Technical Team Member</div>
+        <div class="tc2">HackerRank Campus Crew SRMIST</div>
+        <div class="ttype">Campus · Technical</div>
+        <p class="tds">Contributing to coding events, competitive programming sessions, and technical initiatives. Assisting in organizing hackathons and promoting coding culture across the SRM campus.</p>
+        <div class="ttags"><span class="ttag">Competitive Programming</span><span class="ttag">Event Management</span><span class="ttag">DSA</span></div>
+      </div>
+      <div class="ti rv d3">
+        <div class="td">Mar 2026 – Present</div>
+        <div class="tr">Corporate Member</div>
+        <div class="tc2">CODENEX Club SRMIST</div>
+        <div class="ttype">Community · Technical</div>
+        <p class="tds">Active member contributing to coding culture, community initiatives, and competitive programming events at SRM IST.</p>
+        <div class="ttags"><span class="ttag">Coding</span><span class="ttag">Community</span><span class="ttag">Competitive Programming</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div id="certifications" class="sec">
+  <div class="lbl rv">// CREDENTIALS</div>
+  <h2 class="ttl rv d1">CLEARANCES &amp; <span class="ta">CREDENTIALS</span></h2>
+  <p class="sub rv d2">[ verified · issued · active ]</p>
+  <div class="cg">
+    <div class="cc tcc rv"><div class="ci">🔐</div><div class="ctt">Deloitte Cyber Job Simulation</div><div class="cm">FORAGE · FEB 2026</div><div class="csk"><span>Threat Analysis</span><span>Network Security</span></div><div class="cwm">DL</div></div>
+    <div class="cc vcc rv d1"><div class="ci">🐍</div><div class="ctt">HackerRank Python (Basic)</div><div class="cm">HACKERRANK · DEC 2025</div><div class="csk"><span>Python Programming</span></div><div class="cwm">HR</div></div>
+    <div class="cc tcc rv d2"><div class="ci">⚙️</div><div class="ctt">OPSWAT Critical Infrastructure Protection</div><div class="cm">OPSWAT · NOV 2024</div><div class="csk"><span>CIP</span><span>OT Security</span></div><div class="cwm">OP</div></div>
+    <div class="cc tcc rv"><div class="ci">🛡️</div><div class="ctt">HP Cybersecurity Awareness</div><div class="cm">HP · VERIFIED</div><div class="csk"><span>Cybersecurity Fundamentals</span></div><div class="cwm">HP</div></div>
+    <div class="cc tcc rv d1"><div class="ci">🌐</div><div class="ctt">Microsoft × Tata STRIVE — Cybersecurity for Beginners (40hr)</div><div class="cm">MICROSOFT · NOV 2024</div><div class="csk"><span>Network Security</span><span>Cybersecurity</span></div><div class="cwm">MS</div></div>
+    <div class="cc vcc rv d2"><div class="ci">🏆</div><div class="ctt">HackSecure X International Hackathon 2026</div><div class="cm">DIGITAL GAVEL TEAM · 2026</div><div class="csk"><span>AI Security</span><span>GovTech</span><span>Participation</span></div><div class="cwm">HX</div></div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achievements" class="sec-bg">
+  <div class="inn">
+    <div class="lbl rv">// HONORS</div>
+    <h2 class="ttl rv d1">MISSION <span class="ta">LOGS</span></h2>
+    <p class="sub rv d2">[ competition results · milestones ]</p>
+    <div class="ag">
+      <div class="ac rv">
+        <div class="ar">4th</div>
+        <div class="ae">Ideathon 6.0 · SRM University</div>
+        <div class="apr">▸ EDUBID · BidBrains Team</div>
+        <div class="am">Feb 2025 · 200+ competing teams<br>NWC Dept, Team SRM Hackathon<br>Team: Purva Jain, Shravani Singh, Aadya Jain, Keshav Singla</div>
+        <div class="apz">₹3,000 CASH PRIZE</div>
+        <div class="abg">🥇</div>
+      </div>
+      <div class="ac rv d1">
+        <div class="ar" style="color:var(--v)">✓</div>
+        <div class="ae">HackSecure X · International 2026</div>
+        <div class="apr">▸ AutoJustice AI · Digital Gavel Team</div>
+        <div class="am">Cleared initial rounds · International hackathon<br>University of Piraeus (Greece) · Univ. of South Florida (USA)<br>SUNY Polytechnic Institute (USA) · AI Edutech</div>
+        <div style="margin-top:12px"><span class="bdg bv2">INITIAL ROUNDS CLEARED</span></div>
+        <div class="abg">🌐</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="research" class="sec">
+  <div class="lbl rv">// PUBLICATIONS</div>
+  <h2 class="ttl rv d1">ACTIVE <span class="va">RESEARCH</span></h2>
+  <p class="sub rv d2">[ targeting arXiv · manuscript in progress ]</p>
+  <div class="arxiv rv">
+    <div class="axbg">arXiv</div>
+    <div class="axhdr">
+      <span class="axid">arXiv · cs.LG / cs.CR · 2026 · IN PROGRESS</span>
+      <span class="axst">⚡ MANUSCRIPT IN PROGRESS</span>
+    </div>
+    <h3 class="axt">"A Unified Framework for Auditing, Mitigating, and Reporting Attribute Leakage in Large-Scale Face Recognition Systems"</h3>
+    <div class="axa">Authors: Keshav Singla · Abhilipsa Sahoo (collaborator)</div>
+    <div class="axi">SRM Institute of Science and Technology, Kattankulatham, Chennai</div>
+    <div class="axal">Abstract</div>
+    <p class="axab">Face recognition models trained on large-scale datasets unintentionally encode sensitive demographic attributes — gender, age, ethnicity — within their embedding spaces. This work presents a unified framework for: (1) quantifying attribute leakage via adversarial inference attacks, (2) mitigating leakage through adversarial disentanglement and embedding regularization using Gradient Reversal Layers, and (3) standardized reporting via IEEE-compatible model cards and cryptographic audit logs. Validated on 200,000 samples achieving 98.4% post-mitigation demographic parity.</p>
+    <div style="margin-top:14px;font-family:var(--mn);font-size:.7rem;color:var(--ts)">Associated project: <a href="#projects" style="color:var(--v)">ObscuraAI ↗</a></div>
+    <div class="axkw">
+      <span class="kw">Privacy-Preserving ML</span><span class="kw">Adversarial ML</span><span class="kw">Face Recognition</span><span class="kw">Attribute Leakage</span><span class="kw">Fairness</span><span class="kw">Gradient Reversal Layer</span><span class="kw">Demographic Parity</span><span class="kw">Trustworthy AI</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="sec-bg">
+  <div class="inn">
+    <div class="lbl rv">// CONNECT</div>
+    <h2 class="ttl rv d1">ESTABLISH <span class="ta">CONNECTION</span></h2>
+    <p class="sub rv d2">[ open to ML research internships · AI safety roles · privacy-preserving AI · Summer '26 / Winter '26 ]</p>
+    <div class="cog">
+      <div class="coa rv">
+        <span class="sig">[ SIGNAL DETECTED ]</span>
+        If you're building <em>trustworthy AI</em>,<br>
+        or breaking systems to<br>
+        make them safer —<br>
+        let's talk.
+        <div class="avb"><div class="avd"></div>OPEN TO INTERNSHIPS · SUMMER/WINTER 2026</div>
+      </div>
+      <div class="rv d2">
+        <!-- FORMSPREE: replace FORM_ID below with your real ID from formspree.io (see setup note) -->
+        <form id="contactForm" class="cf" action="https://formspree.io/f/FORM_ID" method="POST" onsubmit="sendForm(event)">
+          <div class="fg"><label class="fl">Name</label><input id="cf-name" name="name" class="fi" type="text" placeholder="Your name" required/></div>
+          <div class="fg"><label class="fl">Email / Company</label><input id="cf-email" name="email" class="fi" type="text" placeholder="you@company.com" required/></div>
+          <div class="fg"><label class="fl">What are you building?</label><textarea id="cf-msg" name="message" class="ft" placeholder="Tell me about your project, role, or opportunity..."></textarea></div>
+          <button type="submit" class="bp" style="width:100%;text-align:center">[ TRANSMIT MESSAGE ]</button>
+        </form>
+        <div class="clinks">
+          <div class="cli"><span class="cll">EMAIL</span><a href="mailto:keshavsingla940@gmail.com">keshavsingla940@gmail.com</a></div>
+          <div class="cli"><span class="cll">PHONE</span><a href="tel:+918094496564">+91 80944 96564</a></div>
+          <div class="cli"><span class="cll">LINKEDIN</span><a href="https://www.linkedin.com/in/keshavsingla1609" target="_blank" rel="noopener">linkedin.com/in/keshavsingla1609</a></div>
+          <div class="cli"><span class="cll">GITHUB</span><a href="https://github.com/keshavhacker1609" target="_blank" rel="noopener">github.com/keshavhacker1609</a></div>
+          <div class="cli"><span class="cll">LOCATION</span><span style="color:var(--ts)">Chennai, Tamil Nadu, India</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fn">KESHAV SINGLA</div>
+  <div class="fs">B.Tech CSE @ SRM IST · CLASS OF 2028 · Chennai, India</div>
+  <div class="fs" style="color:var(--t);margin-top:8px">Built with obsession, not a template.</div>
+  <div class="fs" style="margin-top:5px">© 2026 — All systems operational</div>
+  <!-- TODO: Update GitHub handle from keshavhacker1609 → keshavsingla when migration is complete -->
+  <div style="margin-top:14px;font-family:var(--mn);font-size:.58rem;color:var(--tm)">github.com/keshavhacker1609</div>
+</footer>
+
+</div><!-- /main -->
+
+<script>
+/* ═══════════════════════════════════════════════
+   BOOT SEQUENCE
+═══════════════════════════════════════════════ */
+const BOOT=[
+  {t:'[SYSTEM] Initializing secure environment...',c:''},
+  {t:'[AUTH]   Identity verified: KESHAV SINGLA',c:''},
+  {t:'[LOAD]   Loading AI/ML research modules... ████████ 100%',c:''},
+  {t:'[LOAD]   Cybersecurity protocols active... ████████ 100%',c:''},
+  {t:'[WARN]   Privacy-preserving systems engaged',c:'warn'},
+  {t:'[READY]  Portfolio online. Welcome, Recruiter.',c:'ok'},
+];
+let alive=true;
+const BL=document.getElementById('blines');
+
+function typeLine(obj,cb){
+  if(!alive)return;
+  const el=document.createElement('span');
+  el.className='bl on '+obj.c;
+  el.textContent='';
+  BL.appendChild(el);
+  let i=0;
+  const iv=setInterval(()=>{
+    if(!alive){clearInterval(iv);return}
+    if(i<obj.t.length){el.textContent+=obj.t[i++]}
+    else{clearInterval(iv);setTimeout(cb,100)}
+  },16);
+}
+
+function runBoot(){
+  let idx=0;
+  (function next(){
+    if(idx<BOOT.length&&alive) typeLine(BOOT[idx++],next);
+    else if(alive) setTimeout(endBoot,500);
+  })();
+}
+
+function endBoot(){
+  if(!alive)return;
+  alive=false;
+  const b=document.getElementById('boot');
+  b.classList.add('gone');
+  document.getElementById('main').style.opacity='1';
+  document.body.classList.remove('booting');
+  setTimeout(()=>b.style.display='none',800);
+  boot();
+}
+
+function skipBoot(){alive=false;endBoot()}
+window.addEventListener('load',()=>setTimeout(runBoot,150));
+
+/* ═══════════════════════════════════════════════
+   CUSTOM CURSOR + PARTICLES
+═══════════════════════════════════════════════ */
+const CUR=document.getElementById('cur'),CDOT=document.getElementById('cdot');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  CDOT.style.left=mx+'px';CDOT.style.top=my+'px';
+  spawnP(mx,my);
+});
+document.addEventListener('mousedown',()=>{CUR.style.width='13px';CUR.style.height='13px'});
+document.addEventListener('mouseup',()=>{CUR.style.width='18px';CUR.style.height='18px'});
+(function curAnim(){
+  cx+=(mx-cx)*.11;cy+=(my-cy)*.11;
+  CUR.style.left=cx+'px';CUR.style.top=cy+'px';
+  requestAnimationFrame(curAnim);
+})();
+function spawnP(x,y){
+  const p=document.createElement('div');
+  p.className='cp';
+  const s=Math.random()*4+1.5;
+  p.style.cssText=`width:${s}px;height:${s}px;left:${x}px;top:${y}px;opacity:.55`;
+  document.body.appendChild(p);
+  let op=.55;
+  const iv=setInterval(()=>{
+    op-=.055;p.style.opacity=op;
+    if(op<=0){clearInterval(iv);p.remove()}
+  },18);
+}
+
+/* ═══════════════════════════════════════════════
+   NEURAL NETWORK CANVAS
+═══════════════════════════════════════════════ */
+function initNeural(){
+  const cv=document.getElementById('hc');
+  if(!cv)return;
+  const ctx=cv.getContext('2d');
+  let W,H,nodes=[];
+  const N=55,DIST=155;
+  let mx2=0,my2=0;
+  function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight}
+  rsz();window.addEventListener('resize',rsz);
+  cv.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx2=e.clientX-r.left;my2=e.clientY-r.top});
+  for(let i=0;i<N;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.8+.8});
+  (function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(let i=0;i<nodes.length;i++){
+      const n=nodes[i];
+      n.x+=n.vx;n.y+=n.vy;
+      if(n.x<0||n.x>W)n.vx*=-1;
+      if(n.y<0||n.y>H)n.vy*=-1;
+      ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(0,245,196,.55)';ctx.fill();
+      const dm=Math.hypot(n.x-mx2,n.y-my2);
+      if(dm<190){ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(mx2,my2);ctx.strokeStyle=`rgba(168,85,247,${(1-dm/190)*.35})`;ctx.lineWidth=.7;ctx.stroke()}
+      for(let j=i+1;j<nodes.length;j++){
+        const d=Math.hypot(n.x-nodes[j].x,n.y-nodes[j].y);
+        if(d<DIST){ctx.beginPath();ctx.moveTo(n.x,n.y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(0,245,196,${(1-d/DIST)*.13})`;ctx.lineWidth=.5;ctx.stroke()}
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+}
+
+/* ═══════════════════════════════════════════════
+   MATRIX RAIN
+═══════════════════════════════════════════════ */
+function initMatrix(){
+  const cv=document.getElementById('mc');
+  if(!cv)return;
+  const ctx=cv.getContext('2d');
+  let W,H,cols,drops=[];
+  const chars='アイウエオカキクケコサシスセソタチツABCDEF0123456789';
+  let paused=false;
+  function rsz(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;cols=Math.floor(W/16);drops=Array(cols).fill(1)}
+  rsz();window.addEventListener('resize',rsz);
+  document.addEventListener('mouseenter',e=>{if(e.target.tagName!=='CANVAS')paused=true},true);
+  document.addEventListener('mouseleave',e=>{if(e.target.tagName!=='CANVAS')paused=false},true);
+  (function draw(){
+    if(!paused){
+      ctx.fillStyle='rgba(10,10,15,.06)';ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='rgba(0,245,196,.45)';ctx.font='13px JetBrains Mono,monospace';
+      for(let i=0;i<drops.length;i++){
+        ctx.fillText(chars[Math.floor(Math.random()*chars.length)],i*16,drops[i]*16);
+        if(drops[i]*16>H&&Math.random()>.978)drops[i]=0;
+        drops[i]++;
+      }
+    }
+    requestAnimationFrame(draw);
+  })();
+}
+
+/* ═══════════════════════════════════════════════
+   ROLE TYPEWRITER
+═══════════════════════════════════════════════ */
+function initRoles(){
+  const roles=['AI/ML Engineer','Privacy-Preserving ML Researcher','Adversarial Robustness Engineer','Backend Systems Builder','Trustworthy AI Advocate'];
+  const el=document.getElementById('rt');
+  if(!el)return;
+  let ri=0,ci=0,del=false;
+  (function tick(){
+    const r=roles[ri];
+    if(!del){el.textContent=r.slice(0,++ci);if(ci===r.length){setTimeout(()=>{del=true;tick()},1900);return}}
+    else{el.textContent=r.slice(0,--ci);if(!ci){del=false;ri=(ri+1)%roles.length}}
+    setTimeout(tick,del?45:78);
+  })();
+}
+
+/* ═══════════════════════════════════════════════
+   COUNTER ANIMATION
+═══════════════════════════════════════════════ */
+function counter(el){
+  const tgt=+el.dataset.target,sfx=el.dataset.suffix||'',dec=el.dataset.dec==='1';
+  const dur=1500,s=performance.now();
+  // Suffix in a smaller span so it doesn't inherit the giant number font-size
+  let sfxEl=el.querySelector('.csuf');
+  if(!sfxEl&&sfx){
+    sfxEl=document.createElement('span');
+    sfxEl.className='csuf';
+    sfxEl.style.cssText='font-size:.52em;letter-spacing:1px;opacity:.9;vertical-align:middle';
+    el.appendChild(sfxEl);
+  }
+  (function up(now){
+    const p=Math.min((now-s)/dur,1),e=1-Math.pow(1-p,3),v=Math.round(tgt*e);
+    const num=dec?(v/10).toFixed(1):String(v);
+    const tn=el.childNodes[0];
+    if(tn&&tn.nodeType===3){tn.nodeValue=num}else{el.insertBefore(document.createTextNode(num),el.firstChild)}
+    if(sfxEl)sfxEl.textContent=sfx;
+    if(p<1)requestAnimationFrame(up);
+  })(s);
+}
+
+/* ═══════════════════════════════════════════════
+   INTERSECTION OBSERVERS
+═══════════════════════════════════════════════ */
+function initObservers(){
+  // Reveal
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(e=>ro.observe(e));
+  // Skill bars
+  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';so.unobserve(e.target)}}),{threshold:.3});
+  document.querySelectorAll('.skf').forEach(b=>so.observe(b));
+  // Counters
+  const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){counter(e.target);co.unobserve(e.target)}}),{threshold:.5});
+  document.querySelectorAll('.sn').forEach(n=>co.observe(n));
+  // Timeline
+  const tl=document.getElementById('timeline');
+  if(tl){const to=new IntersectionObserver(es=>{if(es[0].isIntersecting){tl.classList.add('drawn');to.disconnect()}},{threshold:.08});to.observe(tl)}
+}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+function initNav(){
+  const links=document.querySelectorAll('.na a');
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting)links.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+e.target.id));
+  }),{rootMargin:'-40% 0px -40% 0px'});
+  document.querySelectorAll('[id]').forEach(s=>obs.observe(s));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    document.getElementById('navlinks').classList.remove('open');
+  }));
+}
+
+function toggleMenu(){document.getElementById('navlinks').classList.toggle('open')}
+
+/* ═══════════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════════ */
+function sendForm(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector('button');
+  const ok=()=>{btn.textContent='[ MESSAGE SENT ✓ ]';btn.style.cssText='width:100%;text-align:center;background:rgba(39,201,63,.12);color:#27c93f;border-color:rgba(39,201,63,.4)';form.reset();setTimeout(()=>{btn.textContent='[ TRANSMIT MESSAGE ]';btn.style.cssText='width:100%;text-align:center'},3500)};
+  const name=(document.getElementById('cf-name').value||'').trim();
+  const from=(document.getElementById('cf-email').value||'').trim();
+  const msg=(document.getElementById('cf-msg').value||'').trim();
+
+  // Fallback: if Formspree isn't configured yet, open the visitor's mail client
+  function mailFallback(){
+    const subject=encodeURIComponent('Portfolio contact — '+(name||'New message'));
+    const body=encodeURIComponent('Name: '+name+'\nFrom: '+from+'\n\n'+msg);
+    window.location.href='mailto:keshavsingla940@gmail.com?subject='+subject+'&body='+body;
+    btn.textContent='[ OPENING MAIL CLIENT ✓ ]';
+    setTimeout(()=>{btn.textContent='[ TRANSMIT MESSAGE ]'},3500);
+  }
+
+  if(form.action.includes('FORM_ID')){mailFallback();return}
+
+  btn.textContent='[ TRANSMITTING... ]';
+  fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+    .then(r=>{if(r.ok){ok()}else{mailFallback()}})
+    .catch(mailFallback);
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL PROGRESS + BACK TO TOP
+═══════════════════════════════════════════════ */
+function initScrollUI(){
+  const bar=document.getElementById('progress');
+  const top=document.getElementById('totop');
+  let ticking=false;
+  function update(){
+    const h=document.documentElement;
+    const scrolled=h.scrollTop/(h.scrollHeight-h.clientHeight);
+    bar.style.width=(scrolled*100)+'%';
+    top.classList.toggle('show',h.scrollTop>600);
+    ticking=false;
+  }
+  window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});
+  update();
+}
+
+/* ═══════════════════════════════════════════════
+   BOOT EVERYTHING
+═══════════════════════════════════════════════ */
+function boot(){
+  initNeural();
+  initMatrix();
+  initRoles();
+  initObservers();
+  initNav();
+  initScrollUI();
+}
+</script>
+</body>
+</html>
