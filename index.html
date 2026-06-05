@@ -221,6 +221,15 @@ body::before{
 .skt{height:4px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
 .skf{height:100%;width:0;border-radius:2px;background:var(--t);transition:width 1s cubic-bezier(.17,.67,.3,1.1)}
 .vp .skf{background:var(--v)}
+/* Evidence-based skill rows (no vanity %) */
+.skx{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.skx:last-child{border-bottom:none}
+.skx-name{font-family:var(--mn);font-size:.82rem;color:#fff;white-space:nowrap}
+.skx-ev{font-family:var(--mn);font-size:.62rem;color:var(--tm);text-align:right;line-height:1.5}
+.skx-ev b{color:var(--t);font-weight:500}
+.vp .skx-ev b{color:var(--v)}
+.sp-note{font-family:var(--mn);font-size:.58rem;color:var(--tm);margin-top:14px;letter-spacing:.5px}
+@media(max-width:480px){.skx{flex-direction:column;gap:3px}.skx-ev{text-align:left}}
 .tags{display:flex;flex-wrap:wrap;gap:10px}
 .tag{font-family:var(--mn);font-size:.63rem;letter-spacing:.5px;color:var(--ts);border:1px solid var(--b);padding:5px 12px;border-radius:100px;transition:all .2s;cursor:default}
 .tag:hover{color:var(--t);border-color:rgba(0,245,196,.4);background:rgba(0,245,196,.04)}
@@ -685,7 +694,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <span class="dc-link"></span>
         <span class="dc-node dc-sec"><i></i>SECURITY CORE</span>
       </div>
-      <p class="ho rv d3">I sit at the intersection of machine learning and AI safety — auditing models for privacy leakage, defending against adversarial attacks, and engineering AI that holds up under real-world scrutiny.</p>
+      <p class="ho rv d3">I build and break machine-learning systems — I audit models for privacy leakage, defend pipelines against adversarial attacks, and ship AI backends that hold up under real-world scrutiny.</p>
       <div class="hcta rv d4">
         <a href="#projects" class="bp">[ VIEW RESEARCH ]</a>
         <a href="Keshav_Singla_Resume.pdf" download class="bo">[ ↓ RÉSUMÉ ]</a>
@@ -754,25 +763,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     <div class="sg">
       <div class="sp vp rv">
         <div class="spt"><div class="dot dv"></div><span style="color:var(--v)">AI / ML STACK</span></div>
-        <div class="ski"><div class="skr"><span>PyTorch</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
-        <div class="ski"><div class="skr"><span>TensorFlow</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
-        <div class="ski"><div class="skr"><span>scikit-learn</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
-        <div class="ski"><div class="skr"><span>Hugging Face Transformers</span><span class="skp">65%</span></div><div class="skt"><div class="skf" data-w="65"></div></div></div>
-        <div class="ski"><div class="skr"><span>Adversarial ML</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
-        <div class="ski"><div class="skr"><span>Privacy-Preserving ML</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
-        <div class="ski"><div class="skr"><span>Gemini API</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
-        <div class="ski"><div class="skr"><span>Computer Vision</span><span class="skp">70%</span></div><div class="skt"><div class="skf" data-w="70"></div></div></div>
+        <div class="skx"><span class="skx-name">PyTorch</span><span class="skx-ev">GRL &amp; training loop in <b>ObscuraAI</b></span></div>
+        <div class="skx"><span class="skx-name">scikit-learn</span><span class="skx-ev">attacker probes <b>ObscuraAI</b> · ML in <b>TrustLens</b></span></div>
+        <div class="skx"><span class="skx-name">Privacy-Preserving ML</span><span class="skx-ev">leakage audit + mitigation, <b>ObscuraAI</b></span></div>
+        <div class="skx"><span class="skx-name">Adversarial ML</span><span class="skx-ev">inference attacks &amp; defense, <b>ObscuraAI</b></span></div>
+        <div class="skx"><span class="skx-name">Gemini API (LLMs)</span><span class="skx-ev">triage <b>AutoJustice</b> · deception <b>Phantom</b></span></div>
+        <div class="skx"><span class="skx-name">Sentence-Transformers</span><span class="skx-ev">semantic detection, <b>Phantom Protocol</b></span></div>
+        <div class="skx"><span class="skx-name">Computer Vision</span><span class="skx-ev">embeddings <b>ObscuraAI</b> · forensics <b>TrustLens</b></span></div>
+        <div class="sp-note">Also: TensorFlow, Hugging Face &mdash; coursework &amp; experimentation</div>
       </div>
       <div class="sp rv d1">
         <div class="spt"><div class="dot dt"></div><span style="color:var(--t)">SECURITY & BACKEND STACK</span></div>
-        <div class="ski"><div class="skr"><span>Python</span><span class="skp">95%</span></div><div class="skt"><div class="skf" data-w="95"></div></div></div>
-        <div class="ski"><div class="skr"><span>FastAPI</span><span class="skp">85%</span></div><div class="skt"><div class="skf" data-w="85"></div></div></div>
-        <div class="ski"><div class="skr"><span>Node.js / Express</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
-        <div class="ski"><div class="skr"><span>PostgreSQL / MongoDB</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
-        <div class="ski"><div class="skr"><span>Redis + Celery</span><span class="skp">70%</span></div><div class="skt"><div class="skf" data-w="70"></div></div></div>
-        <div class="ski"><div class="skr"><span>Linux / Bash</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
-        <div class="ski"><div class="skr"><span>Network Security</span><span class="skp">75%</span></div><div class="skt"><div class="skf" data-w="75"></div></div></div>
-        <div class="ski"><div class="skr"><span>Docker / Git</span><span class="skp">80%</span></div><div class="skt"><div class="skf" data-w="80"></div></div></div>
+        <div class="skx"><span class="skx-name">Python</span><span class="skx-ev">primary language, <b>4 projects</b></span></div>
+        <div class="skx"><span class="skx-name">FastAPI</span><span class="skx-ev"><b>ObscuraAI</b> · <b>AutoJustice</b> · <b>Phantom</b></span></div>
+        <div class="skx"><span class="skx-name">Node.js / Express</span><span class="skx-ev">API + real-time feed, <b>TrustLens</b></span></div>
+        <div class="skx"><span class="skx-name">PostgreSQL / MongoDB</span><span class="skx-ev">case &amp; log data <b>AutoJustice</b> · <b>TrustLens</b></span></div>
+        <div class="skx"><span class="skx-name">Redis + Celery</span><span class="skx-ev">async pipeline, <b>AutoJustice</b></span></div>
+        <div class="skx"><span class="skx-name">Docker / Git</span><span class="skx-ev">containerized deploy, <b>AutoJustice</b></span></div>
+        <div class="skx"><span class="skx-name">Network Security</span><span class="skx-ev">recon tool · Deloitte / OPSWAT certs</span></div>
+        <div class="skx"><span class="skx-name">Linux / Bash</span><span class="skx-ev">deployment &amp; tooling</span></div>
       </div>
     </div>
     <div class="tags rv">
@@ -1041,7 +1050,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     </div>
     <h3 class="axt">"A Unified Framework for Auditing, Mitigating, and Reporting Attribute Leakage in Large-Scale Face Recognition Systems"</h3>
     <div class="axa">Authors: Keshav Singla · Abhilipsa Sahoo (collaborator)</div>
-    <div class="axi">SRM Institute of Science and Technology, Kattankulatham, Chennai</div>
+    <div class="axi">SRM Institute of Science and Technology, Kattankulathur, Chennai</div>
     <div class="axal">Abstract</div>
     <p class="axab">Face recognition models trained on large-scale datasets unintentionally encode sensitive demographic attributes — gender, age, ethnicity — within their embedding spaces. This work presents a unified framework for: (1) quantifying attribute leakage via adversarial inference attacks, (2) mitigating leakage through adversarial disentanglement and embedding regularization using Gradient Reversal Layers, and (3) standardized reporting via IEEE-compatible model cards and cryptographic audit logs. Validated on 200,000 samples achieving 98.4% post-mitigation demographic parity.</p>
     <div style="margin-top:14px;font-family:var(--mn);font-size:.7rem;color:var(--ts)">Associated project: <a href="#projects" style="color:var(--v)">ObscuraAI ↗</a></div>
@@ -1094,8 +1103,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <footer>
   <div class="fn">KESHAV SINGLA</div>
   <div class="fs">B.Tech CSE @ SRM IST · CLASS OF 2028 · Chennai, India</div>
-  <div class="fs" style="color:var(--t);margin-top:8px">Built with obsession, not a template.</div>
-  <div class="fs" style="margin-top:5px">© 2026 — All systems operational</div>
+  <div class="fs" style="color:var(--t);margin-top:8px">Hand-coded · HTML, CSS &amp; vanilla JS · no frameworks.</div>
+  <div class="fs" style="margin-top:5px">© 2026 Keshav Singla</div>
   <!-- TODO: Update GitHub handle from keshavhacker1609 → keshavsingla when migration is complete -->
   <div style="margin-top:14px;font-family:var(--mn);font-size:.58rem;color:var(--tm)">github.com/keshavhacker1609</div>
 </footer>
