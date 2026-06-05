@@ -85,9 +85,9 @@ body::before{
 }
 
 /* ── CURSOR ────────────────────────────────────────── */
-#cur{position:fixed;width:18px;height:18px;border:1.5px solid var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s;mix-blend-mode:screen}
-#cdot{position:fixed;width:4px;height:4px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)}
-.cp{position:fixed;border-radius:50%;pointer-events:none;z-index:9997;background:var(--t);transform:translate(-50%,-50%)}
+#cur{position:fixed;width:30px;height:30px;border:1px solid rgba(0,245,196,.5);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s cubic-bezier(.2,.8,.2,1),height .25s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s;mix-blend-mode:screen}
+#cur.cur-lg{width:54px;height:54px;background:rgba(0,245,196,.06);border-color:rgba(0,245,196,.8)}
+#cdot{position:fixed;width:5px;height:5px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,245,196,.6)}
 
 /* ── BOOT ──────────────────────────────────────────── */
 #boot{
@@ -133,8 +133,19 @@ body::before{
 
 /* ── HERO ──────────────────────────────────────────── */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 44px 60px;overflow:hidden}
-#hc{position:absolute;inset:0;z-index:0}
-#mc{position:absolute;inset:0;z-index:0;opacity:.05;pointer-events:none}
+/* Premium aurora light-field + faint engineering grid */
+.hero-aura{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.hero-aura::before{content:'';position:absolute;width:90vw;height:90vw;max-width:1100px;max-height:1100px;left:-12%;top:-32%;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(168,85,247,.22),transparent 60%);filter:blur(80px);animation:aura1 24s ease-in-out infinite}
+.hero-aura::after{content:'';position:absolute;width:80vw;height:80vw;max-width:1000px;max-height:1000px;right:-18%;bottom:-30%;border-radius:50%;
+  background:radial-gradient(circle at 60% 60%,rgba(0,245,196,.18),transparent 60%);filter:blur(90px);animation:aura2 30s ease-in-out infinite}
+#hero::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:54px 54px;mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 45%,#000,transparent 75%)}
+@keyframes aura1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8%,6%) scale(1.12)}}
+@keyframes aura2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7%,-5%) scale(1.15)}}
+#hc{position:absolute;inset:0;z-index:1;opacity:.85}
+#mc{position:absolute;inset:0;z-index:0;opacity:.04;pointer-events:none}
 .hi{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}
 .hl{}
 .hsl{font-family:var(--mn);font-size:.68rem;letter-spacing:3px;color:var(--t);margin-bottom:16px;text-transform:uppercase}
@@ -208,7 +219,7 @@ body::before{
 .ab p+p{margin-top:14px}
 .sr{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 14px;margin-top:38px;border-top:1px solid var(--b);padding-top:30px}
 .si{text-align:center}
-.sn{font-family:var(--hd);font-size:1.75rem;font-weight:800;color:var(--t);display:block}
+.sn{font-family:var(--hd);font-size:1.9rem;font-weight:800;color:var(--t);display:block;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
 .sk{font-family:var(--mn);font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--tm);margin-top:4px;display:block}
 
 /* ── SKILLS ────────────────────────────────────────── */
@@ -608,7 +619,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 .cs-results{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
 .csm{background:rgba(255,255,255,.02);border:1px solid var(--b);border-radius:10px;padding:18px 14px;text-align:center}
 .csm:nth-child(even){border-color:var(--bv)}
-.csm-n{font-family:var(--hd);font-size:1.6rem;font-weight:800;color:var(--t);line-height:1}
+.csm-n{font-family:var(--hd);font-size:1.6rem;font-weight:800;color:var(--t);line-height:1;font-variant-numeric:tabular-nums}
 .csm:nth-child(even) .csm-n{color:var(--v)}
 .csm-l{font-family:var(--mn);font-size:.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--tm);margin-top:8px;line-height:1.4}
 .case-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--bv)}
@@ -683,6 +694,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-aura" aria-hidden="true"></div>
   <canvas id="hc"></canvas>
   <canvas id="mc"></canvas>
   <div class="hi">
@@ -1389,27 +1401,16 @@ let mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove',e=>{
   mx=e.clientX;my=e.clientY;
   CDOT.style.left=mx+'px';CDOT.style.top=my+'px';
-  spawnP(mx,my);
 });
-document.addEventListener('mousedown',()=>{CUR.style.width='13px';CUR.style.height='13px'});
-document.addEventListener('mouseup',()=>{CUR.style.width='18px';CUR.style.height='18px'});
+// Refined cursor: the ring gently grows over interactive elements
+const interactiveSel='a,button,input,textarea,.pc,.cc,.tag,.term-chip,.fb';
+document.addEventListener('mouseover',e=>{ if(e.target.closest(interactiveSel)) CUR.classList.add('cur-lg'); });
+document.addEventListener('mouseout',e=>{ if(e.target.closest(interactiveSel)) CUR.classList.remove('cur-lg'); });
 (function curAnim(){
-  cx+=(mx-cx)*.11;cy+=(my-cy)*.11;
+  cx+=(mx-cx)*.16;cy+=(my-cy)*.16;
   CUR.style.left=cx+'px';CUR.style.top=cy+'px';
   requestAnimationFrame(curAnim);
 })();
-function spawnP(x,y){
-  const p=document.createElement('div');
-  p.className='cp';
-  const s=Math.random()*4+1.5;
-  p.style.cssText=`width:${s}px;height:${s}px;left:${x}px;top:${y}px;opacity:.55`;
-  document.body.appendChild(p);
-  let op=.55;
-  const iv=setInterval(()=>{
-    op-=.055;p.style.opacity=op;
-    if(op<=0){clearInterval(iv);p.remove()}
-  },18);
-}
 
 /* ═══════════════════════════════════════════════
    NEURAL NETWORK CANVAS
