@@ -1363,7 +1363,9 @@ function runBoot(){
   function start_(){
   const ctx=cv.getContext('2d');
   const DPR=Math.min(window.devicePixelRatio||1,2);
-  const W=Math.min(window.innerWidth*0.86,640), H=Math.min(window.innerHeight*0.4,300);
+  // W/H MUST be integers — getImageData floors canvas size, and a fractional stride
+  // misaligns pixel indexing (this is what broke the monogram sampling on mobile).
+  const W=Math.round(Math.min(window.innerWidth*0.86,640)), H=Math.round(Math.min(window.innerHeight*0.4,300));
   cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px';
   ctx.scale(DPR,DPR);
 
@@ -1371,9 +1373,11 @@ function runBoot(){
   const off=document.createElement('canvas'); off.width=W; off.height=H;
   const o=off.getContext('2d');
   o.fillStyle='#fff'; o.textAlign='center'; o.textBaseline='middle';
-  const fs=Math.min(W*0.5,H*1.05);
+  // Calibrated fit: Syne-800 "KS" ink is ~2.16x the font-size wide and ~0.72x tall.
+  // Size directly so the monogram always fits the canvas (no clipping on mobile widths).
+  const fs=Math.min(W*0.36, H*1.05);
   o.font='800 '+fs+"px 'Syne',sans-serif";
-  o.fillText('KS', W/2, H/2+fs*0.02);
+  o.fillText('KS', W/2, H/2);
   const data=o.getImageData(0,0,W,H).data;
   const targets=[]; const step=W<480?4:3;
   for(let y=0;y<H;y+=step){ for(let x=0;x<W;x+=step){ if(data[(y*W+x)*4+3]>128) targets.push([x,y]); } }
