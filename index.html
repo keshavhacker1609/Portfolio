@@ -89,27 +89,19 @@ body::before{
 #cur.cur-lg{width:54px;height:54px;background:rgba(0,245,196,.06);border-color:rgba(0,245,196,.8)}
 #cdot{position:fixed;width:5px;height:5px;background:var(--t);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 8px rgba(0,245,196,.6)}
 
-/* ── BOOT ──────────────────────────────────────────── */
+/* ── SIGNATURE LOADER ──────────────────────────────── */
 #boot{
-  position:fixed;inset:0;background:var(--bg);z-index:10000;
+  position:fixed;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 45%,#0b0b14,var(--bg));z-index:10000;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .7s;
+  transition:opacity .8s ease;
 }
 #boot.gone{opacity:0;pointer-events:none}
-.bt{
-  width:min(620px,92vw);
-  border:1px solid var(--t);background:rgba(0,245,196,.02);
-  border-radius:6px;padding:28px 30px;box-shadow:var(--gt);
-}
-.bb{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--b)}
-.bd{width:10px;height:10px;border-radius:50%}
-.bd:nth-child(1){background:#ff5f56}.bd:nth-child(2){background:#ffbd2e}.bd:nth-child(3){background:#27c93f}
-.bb span{margin-left:8px;font-size:.7rem;color:var(--tm);font-family:var(--mn)}
-#blines{min-height:150px}
-.bl{font-family:var(--mn);font-size:.8rem;color:var(--t);line-height:2;opacity:0;display:block;white-space:pre}
-.bl.on{opacity:1}
-.bl.warn{color:#ffbd2e}
-.bl.ok{color:#27c93f;font-weight:600}
+.boot-stage{display:flex;flex-direction:column;align-items:center;gap:26px}
+#bootCanvas{display:block}
+.boot-meta{display:flex;flex-direction:column;align-items:center;gap:12px;width:min(300px,70vw)}
+.boot-label{font-family:var(--mn);font-size:.62rem;letter-spacing:3px;color:var(--ts);text-transform:uppercase;transition:opacity .4s}
+.boot-track{width:100%;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+#bootBar{height:100%;width:0;background:linear-gradient(90deg,var(--t),var(--v));border-radius:2px;box-shadow:0 0 10px rgba(0,245,196,.5)}
 #skip{position:fixed;bottom:24px;right:24px;font-family:var(--mn);font-size:.7rem;color:var(--tm);border:1px solid var(--tm);padding:5px 14px;border-radius:3px;cursor:pointer;background:transparent;z-index:10001;transition:color .2s,border-color .2s}
 #skip:hover{color:var(--t);border-color:var(--t)}
 
@@ -659,14 +651,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 <div id="cur"></div>
 <div id="cdot"></div>
 
-<!-- BOOT SEQUENCE -->
+<!-- SIGNATURE LOADER — latent-space particle convergence -->
 <div id="boot">
-  <div class="bt">
-    <div class="bb">
-      <div class="bd"></div><div class="bd"></div><div class="bd"></div>
-      <span>terminal — keshav@srmist:~$</span>
+  <div class="boot-stage">
+    <canvas id="bootCanvas"></canvas>
+    <div class="boot-meta">
+      <div class="boot-label" id="bootLabel">MAPPING&nbsp;EMBEDDING&nbsp;SPACE</div>
+      <div class="boot-track"><div id="bootBar"></div></div>
     </div>
-    <div id="blines"></div>
   </div>
   <button id="skip" onclick="skipBoot()">[ SKIP ]</button>
 </div>
@@ -1344,39 +1336,77 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 
 <script>
 /* ═══════════════════════════════════════════════
-   BOOT SEQUENCE
+   SIGNATURE LOADER — latent-space convergence
 ═══════════════════════════════════════════════ */
-const BOOT=[
-  {t:'[SYSTEM] Initializing secure environment...',c:''},
-  {t:'[AUTH]   Identity verified: KESHAV SINGLA',c:''},
-  {t:'[LOAD]   Loading AI/ML research modules... ████████ 100%',c:''},
-  {t:'[LOAD]   Cybersecurity protocols active... ████████ 100%',c:''},
-  {t:'[WARN]   Privacy-preserving systems engaged',c:'warn'},
-  {t:'[READY]  Portfolio online. Welcome, Recruiter.',c:'ok'},
-];
 let alive=true;
-const BL=document.getElementById('blines');
-
-function typeLine(obj,cb){
-  if(!alive)return;
-  const el=document.createElement('span');
-  el.className='bl on '+obj.c;
-  el.textContent='';
-  BL.appendChild(el);
-  let i=0;
-  const iv=setInterval(()=>{
-    if(!alive){clearInterval(iv);return}
-    if(i<obj.t.length){el.textContent+=obj.t[i++]}
-    else{clearInterval(iv);setTimeout(cb,100)}
-  },16);
-}
 
 function runBoot(){
-  let idx=0;
-  (function next(){
-    if(idx<BOOT.length&&alive) typeLine(BOOT[idx++],next);
-    else if(alive) setTimeout(endBoot,500);
-  })();
+  const cv=document.getElementById('bootCanvas');
+  const label=document.getElementById('bootLabel');
+  const bar=document.getElementById('bootBar');
+  if(!cv){ endBoot(); return; }
+
+  // Respect reduced-motion: brief hold, then reveal
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    bar.style.width='100%'; setTimeout(endBoot,500); return;
+  }
+
+  // Ensure the display font is ready so the monogram samples crisply
+  if(document.fonts && !document.fonts.check("800 40px 'Syne'")){
+    document.fonts.load("800 40px 'Syne'").then(start_).catch(start_);
+    return;
+  }
+  start_();
+
+  function start_(){
+  const ctx=cv.getContext('2d');
+  const DPR=Math.min(window.devicePixelRatio||1,2);
+  const W=Math.min(window.innerWidth*0.86,640), H=Math.min(window.innerHeight*0.4,300);
+  cv.width=W*DPR; cv.height=H*DPR; cv.style.width=W+'px'; cv.style.height=H+'px';
+  ctx.scale(DPR,DPR);
+
+  // Sample target points from the "KS" monogram
+  const off=document.createElement('canvas'); off.width=W; off.height=H;
+  const o=off.getContext('2d');
+  o.fillStyle='#fff'; o.textAlign='center'; o.textBaseline='middle';
+  const fs=Math.min(W*0.5,H*1.05);
+  o.font='800 '+fs+"px 'Syne',sans-serif";
+  o.fillText('KS', W/2, H/2+fs*0.02);
+  const data=o.getImageData(0,0,W,H).data;
+  const targets=[]; const step=W<480?4:3;
+  for(let y=0;y<H;y+=step){ for(let x=0;x<W;x+=step){ if(data[(y*W+x)*4+3]>128) targets.push([x,y]); } }
+  // shuffle for organic convergence
+  for(let i=targets.length-1;i>0;i--){ const j=(Math.random()*(i+1))|0; [targets[i],targets[j]]=[targets[j],targets[i]]; }
+
+  const ps=targets.map(t=>{
+    const ang=Math.random()*Math.PI*2, rad=Math.max(W,H)*(0.5+Math.random()*0.6);
+    return { x:W/2+Math.cos(ang)*rad, y:H/2+Math.sin(ang)*rad, tx:t[0], ty:t[1], mix:t[0]/W };
+  });
+
+  const labels=['MAPPING EMBEDDING SPACE','RESOLVING IDENTITY','KESHAV SINGLA'];
+  let li=0;
+  const DUR=2200, start=performance.now();
+
+  function draw(now){
+    if(!alive) return;
+    const p=Math.min((now-start)/DUR,1);
+    const ease=1-Math.pow(1-p,3);
+    ctx.clearRect(0,0,W,H);
+    for(const pt of ps){
+      pt.x += (pt.tx-pt.x)*0.085;
+      pt.y += (pt.ty-pt.y)*0.085;
+      const r=Math.round(0+168*pt.mix), g=Math.round(245+(85-245)*pt.mix), b=Math.round(196+(247-196)*pt.mix);
+      ctx.fillStyle='rgba('+r+','+g+','+b+','+(0.35+0.65*ease)+')';
+      ctx.fillRect(pt.x,pt.y,1.7,1.7);
+    }
+    bar.style.width=(p*100)+'%';
+    const want=p<0.4?0:(p<0.8?1:2);
+    if(want!==li){ li=want; label.style.opacity=0; setTimeout(()=>{label.textContent=labels[li];label.style.opacity=1;},220); }
+    if(p<1 && alive) requestAnimationFrame(draw);
+    else if(alive) setTimeout(endBoot,520);
+  }
+  requestAnimationFrame(draw);
+  } // end start_
 }
 
 function endBoot(){
