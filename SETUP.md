@@ -1,7 +1,29 @@
 # Keshav Singla — Portfolio Setup
 
 Your portfolio is in `index.html` (single file, zero build tools).
-Three quick personalizations make it recruiter-ready:
+
+---
+
+## ⭐ TWO QUICK TO-DOS (do these now)
+
+### A. Activate the contact form (1 click)
+You already received an email from **FormSubmit** titled
+"Action Required: Activate FormSubmit…". Open it and click **ACTIVATE FORM**.
+After that, every contact-form submission lands in your inbox automatically.
+(Until then the form falls back to opening the visitor's mail app.)
+
+### B. Turn on analytics (2 min, free, privacy-friendly)
+The site already includes the GoatCounter snippet — you just need a code:
+1. Go to **https://www.goatcounter.com** → "Sign up" (free).
+2. Pick a site code, e.g. **keshavsingla** → you get `keshavsingla.goatcounter.com`.
+3. In `index.html`, search for **`YOURCODE`** and replace it with your code:
+   ```html
+   data-goatcounter="https://keshavsingla.goatcounter.com/count"
+   ```
+4. Commit & push. Visit your dashboard at `https://keshavsingla.goatcounter.com`
+   to see visitors — no cookies, no personal data collected.
+
+(If you skip this, nothing breaks — the snippet just won't count anything.)
 
 ---
 
