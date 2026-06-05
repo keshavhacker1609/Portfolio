@@ -508,6 +508,49 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:900px){.seam{padding:0 20px}}
 
 /* ════════════════════════════════════════════════════
+   INTERACTIVE COMMAND TERMINAL  (signature feature)
+   ════════════════════════════════════════════════════ */
+#termHint{position:fixed;bottom:24px;left:24px;z-index:998;display:flex;align-items:center;gap:8px;
+  font-family:var(--mn);font-size:.62rem;letter-spacing:1px;color:var(--ts);
+  background:rgba(18,18,31,.85);backdrop-filter:blur(8px);border:1px solid var(--b);
+  padding:8px 13px;border-radius:100px;cursor:pointer;transition:all .25s;opacity:0;transform:translateY(8px)}
+#termHint.show{opacity:1;transform:none}
+#termHint:hover{border-color:rgba(0,245,196,.4);box-shadow:var(--gt);color:var(--t)}
+#termHint kbd{font-family:var(--mn);background:rgba(0,245,196,.12);color:var(--t);border:1px solid var(--b);
+  border-radius:4px;padding:1px 6px;font-size:.6rem}
+@media(max-width:600px){#termHint{display:none}}
+
+#termOverlay{position:fixed;inset:0;z-index:10010;background:rgba(5,5,9,.6);backdrop-filter:blur(3px);
+  opacity:0;pointer-events:none;transition:opacity .25s;display:flex;align-items:flex-start;justify-content:center;padding-top:12vh}
+#termOverlay.open{opacity:1;pointer-events:auto}
+.term{width:min(680px,94vw);max-height:70vh;display:flex;flex-direction:column;
+  background:linear-gradient(180deg,rgba(13,13,24,.98),rgba(10,10,16,.98));
+  border:1px solid var(--t);border-radius:12px;overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.7),0 0 60px rgba(0,245,196,.15);
+  transform:translateY(-16px) scale(.98);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+#termOverlay.open .term{transform:none}
+.term-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--b);background:rgba(0,245,196,.03)}
+.term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+.term-bar i:nth-child(1){background:#ff5f56}.term-bar i:nth-child(2){background:#ffbd2e}.term-bar i:nth-child(3){background:#27c93f}
+.term-bar span{margin-left:6px;font-family:var(--mn);font-size:.66rem;color:var(--tm)}
+.term-bar .esc{margin-left:auto;font-family:var(--mn);font-size:.58rem;color:var(--tm)}
+.term-out{flex:1;overflow-y:auto;padding:16px 18px;font-family:var(--mn);font-size:.78rem;line-height:1.7;color:var(--ts)}
+.term-out .line{white-space:pre-wrap;word-break:break-word}
+.term-out .cmd{color:var(--t)}
+.term-out .cmd::before{content:'$ ';color:var(--tm)}
+.term-out .v{color:var(--v)}
+.term-out .t{color:var(--t)}
+.term-out .muted{color:var(--tm)}
+.term-out a{color:var(--t);text-decoration:underline}
+.term-in{display:flex;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid var(--b);background:rgba(0,0,0,.25)}
+.term-in .prompt{font-family:var(--mn);font-size:.78rem;color:var(--v);white-space:nowrap}
+.term-in input{flex:1;background:none;border:none;outline:none;color:var(--text-primary);
+  font-family:var(--mn);font-size:.82rem;caret-color:var(--t)}
+.term-chip{display:inline-block;font-family:var(--mn);font-size:.6rem;color:var(--t);border:1px solid var(--b);
+  border-radius:4px;padding:1px 7px;margin:2px 4px 2px 0;cursor:pointer}
+.term-chip:hover{background:rgba(0,245,196,.1)}
+
+/* ════════════════════════════════════════════════════
    CASE STUDY MODAL
    ════════════════════════════════════════════════════ */
 #caseOverlay{position:fixed;inset:0;z-index:10005;background:rgba(5,5,9,.82);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s;display:flex;justify-content:center;overflow-y:auto;padding:40px 20px}
@@ -1024,15 +1067,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="avb"><div class="avd"></div>OPEN TO INTERNSHIPS · SUMMER/WINTER 2026</div>
       </div>
       <div class="rv d2">
-        <!-- FORMSPREE: replace FORM_ID below with your real ID from formspree.io (see setup note) -->
-        <form id="contactForm" class="cf" action="https://formspree.io/f/FORM_ID" method="POST" onsubmit="sendForm(event)">
+        <!-- FormSubmit.co: no signup/API key. FIRST submission triggers a one-time confirm email to
+             keshavsingla940@gmail.com — click that link once, then all messages arrive in the inbox. -->
+        <form id="contactForm" class="cf" action="https://formsubmit.co/ajax/keshavsingla940@gmail.com" method="POST" onsubmit="sendForm(event)">
+          <input type="hidden" name="_subject" value="New portfolio contact ✦ Keshav Singla"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="text" name="_honey" style="display:none"/>
           <div class="fg"><label class="fl">Name</label><input id="cf-name" name="name" class="fi" type="text" placeholder="Your name" required/></div>
-          <div class="fg"><label class="fl">Email / Company</label><input id="cf-email" name="email" class="fi" type="text" placeholder="you@company.com" required/></div>
-          <div class="fg"><label class="fl">What are you building?</label><textarea id="cf-msg" name="message" class="ft" placeholder="Tell me about your project, role, or opportunity..."></textarea></div>
+          <div class="fg"><label class="fl">Email / Company</label><input id="cf-email" name="email" class="fi" type="email" placeholder="you@company.com" required/></div>
+          <div class="fg"><label class="fl">What are you building?</label><textarea id="cf-msg" name="message" class="ft" placeholder="Tell me about your project, role, or opportunity..." required></textarea></div>
           <button type="submit" class="bp" style="width:100%;text-align:center">[ TRANSMIT MESSAGE ]</button>
         </form>
         <div class="clinks">
-          <div class="cli"><span class="cll">EMAIL</span><a href="mailto:keshavsingla940@gmail.com">keshavsingla940@gmail.com</a></div>
+          <div class="cli"><span class="cll">EMAIL</span><a href="mailto:keshavsingla940@gmail.com">keshavsingla940@gmail.com</a><button type="button" id="copyMail" onclick="copyMail()" title="Copy email" style="margin-left:8px;background:none;border:1px solid var(--b);color:var(--t);font-family:var(--mn);font-size:.58rem;padding:2px 8px;border-radius:4px;cursor:pointer">COPY</button></div>
           <div class="cli"><span class="cll">PHONE</span><a href="tel:+918094496564">+91 80944 96564</a></div>
           <div class="cli"><span class="cll">LINKEDIN</span><a href="https://www.linkedin.com/in/keshavsingla1609" target="_blank" rel="noopener">linkedin.com/in/keshavsingla1609</a></div>
           <div class="cli"><span class="cll">GITHUB</span><a href="https://github.com/keshavhacker1609" target="_blank" rel="noopener">github.com/keshavhacker1609</a></div>
@@ -1054,6 +1101,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 </footer>
 
 </div><!-- /main -->
+
+<!-- ════════ INTERACTIVE COMMAND TERMINAL ════════ -->
+<div id="termHint" onclick="openTerm()">
+  <span>Type a command</span><kbd>/</kbd>
+</div>
+<div id="termOverlay" onclick="if(event.target===this)closeTerm()">
+  <div class="term" role="dialog" aria-modal="true" aria-label="Command terminal">
+    <div class="term-bar">
+      <i></i><i></i><i></i>
+      <span>keshav@portfolio — interactive shell</span>
+      <span class="esc">ESC to close</span>
+    </div>
+    <div class="term-out" id="termOut"></div>
+    <div class="term-in">
+      <span class="prompt">keshav@portfolio:~$</span>
+      <input id="termIn" autocomplete="off" spellcheck="false" aria-label="Command input"/>
+    </div>
+  </div>
+</div>
 
 <!-- ════════ CASE STUDY MODAL — ObscuraAI ════════ -->
 <div id="caseOverlay" onclick="if(event.target===this)closeCase()">
@@ -1300,7 +1366,7 @@ function endBoot(){
   boot();
 }
 
-function skipBoot(){alive=false;endBoot()}
+function skipBoot(){endBoot();window.scrollTo(0,0)}
 window.addEventListener('load',()=>setTimeout(runBoot,150));
 
 /* ═══════════════════════════════════════════════
@@ -1471,33 +1537,165 @@ function initNav(){
 
 function toggleMenu(){document.getElementById('navlinks').classList.toggle('open')}
 
+function copyMail(){
+  const btn=document.getElementById('copyMail');
+  navigator.clipboard.writeText('keshavsingla940@gmail.com').then(()=>{
+    const o=btn.textContent;btn.textContent='COPIED ✓';btn.style.color='#27c93f';
+    setTimeout(()=>{btn.textContent=o;btn.style.color='var(--t)'},1800);
+  }).catch(()=>{});
+}
+
+/* ═══════════════════════════════════════════════
+   INTERACTIVE COMMAND TERMINAL  (signature feature)
+═══════════════════════════════════════════════ */
+const TERM = (function(){
+  let out, inp, history=[], hi=-1, opened=false;
+
+  function print(html, cls){
+    const d=document.createElement('div');
+    d.className='line'+(cls?' '+cls:'');
+    d.innerHTML=html;
+    out.appendChild(d);
+    out.scrollTop=out.scrollHeight;
+  }
+  function go(sel){ closeTerm(); const t=document.querySelector(sel); if(t) setTimeout(()=>t.scrollIntoView({behavior:'smooth',block:'start'}),260); }
+
+  const CMD = {
+    help(){
+      print('Available commands:','muted');
+      const rows=[
+        ['about','who I am, in one line'],
+        ['skills','my technical stack'],
+        ['projects','list all 6 builds'],
+        ['open &lt;name&gt;','jump to / read a project (e.g. open obscura)'],
+        ['experience','where I\'ve worked'],
+        ['research','active research paper'],
+        ['contact','how to reach me'],
+        ['resume','download my résumé'],
+        ['github / linkedin','open my profiles'],
+        ['whoami','quick identity readout'],
+        ['stack','one-liner tech summary'],
+        ['clear','clear the screen'],
+      ];
+      rows.forEach(r=>print('  <span class="t">'+r[0].padEnd(0)+'</span>  <span class="muted">— '+r[1]+'</span>'));
+    },
+    about(){ print('Keshav Singla — AI/ML Engineer building <span class="t">trustworthy, privacy-preserving &amp; secure ML</span>. B.Tech CSE @ SRM IST \'28.'); },
+    whoami(){ print('keshav_singla // <span class="v">AI/ML core</span> ⟷ <span class="t">security core</span> // Chennai, India // open to internships 2026'); },
+    skills(){ print('<span class="v">AI/ML:</span> PyTorch · scikit-learn · Adversarial ML · Privacy-Preserving ML · Gemini · CV'); print('<span class="t">Security/Backend:</span> Python · FastAPI · Node · Postgres/Mongo · Redis+Celery · Docker · Network Security'); print('Type <span class="t">skills</span> on the page for full bars →','muted'); go('#skills'); },
+    stack(){ print('Research-grade ML on top of production backends, with security baked in. PyTorch where it\'s hard, FastAPI where it ships.'); },
+    projects(){
+      print('6 projects that actually ship:','muted');
+      print('  <span class="v">01</span> ObscuraAI          <span class="muted">— demographic leakage auditing (research)</span>');
+      print('  <span class="t">02</span> AutoJustice AI     <span class="muted">— FIR automation (live · govtech)</span>');
+      print('  03 TrustLens          <span class="muted">— 5-layer fraud detection (4th/200+)</span>');
+      print('  04 EduBid             <span class="muted">— reverse-auction loan marketplace (live)</span>');
+      print('  <span class="v">05</span> Phantom Protocol   <span class="muted">— AI agent deception defense</span>');
+      print('  06 Network Scanner    <span class="muted">— automated recon tool</span>');
+      print('Tip: <span class="t">open obscura</span> or <span class="t">open autojustice</span> for full case studies.','muted');
+    },
+    experience(){ print('EvoDoc (Backend Intern) · DSA SRMIST (Tech Lead) · HackerRank Campus Crew · CODENEX. Opening section →'); go('#experience'); },
+    research(){ print('Paper (in progress, targeting arXiv): <span class="v">"A Unified Framework for Auditing, Mitigating &amp; Reporting Attribute Leakage in Face Recognition"</span>'); go('#research'); },
+    contact(){ print('Email: <a href="mailto:keshavsingla940@gmail.com">keshavsingla940@gmail.com</a> · Phone: +91 80944 96564'); print('Opening contact →','muted'); go('#contact'); },
+    resume(){ print('Downloading résumé…','t'); const a=document.createElement('a'); a.href='Keshav_Singla_Resume.pdf'; a.download=''; a.click(); },
+    github(){ print('Opening GitHub →','t'); window.open('https://github.com/keshavhacker1609','_blank'); },
+    linkedin(){ print('Opening LinkedIn →','t'); window.open('https://www.linkedin.com/in/keshavsingla1609','_blank'); },
+    clear(){ out.innerHTML=''; },
+    open(arg){
+      const k=(arg||'').toLowerCase();
+      if(/obscura/.test(k)){ print('Loading ObscuraAI case study…','v'); closeTerm(); setTimeout(()=>openCase('obscura'),260); return; }
+      if(/auto|justice|fir/.test(k)){ print('Loading AutoJustice case study…','t'); closeTerm(); setTimeout(()=>openCase('autojustice'),260); return; }
+      if(/trust|lens|fraud/.test(k)){ go('#projects'); return; }
+      if(/edu|bid|loan/.test(k)){ window.open('https://edubid.vercel.app/','_blank'); return; }
+      if(/phantom|protocol|agent/.test(k)){ window.open('https://github.com/keshavhacker1609/phantom-protocol','_blank'); return; }
+      if(/scan|network|recon/.test(k)){ window.open('https://github.com/keshavhacker1609/Network-Security-Scanner','_blank'); return; }
+      if(/project/.test(k)||!k){ go('#projects'); return; }
+      print('Unknown project: '+arg+'. Try: obscura, autojustice, trustlens, edubid, phantom, scanner','muted');
+    },
+    sudo(){ print('Nice try. 🔒 Privilege escalation logged and adversarially profiled (see: Phantom Protocol).','v'); },
+    ls(){ this.projects(); },
+    exit(){ closeTerm(); },
+  };
+
+  function run(raw){
+    const line=raw.trim();
+    if(!line) return;
+    print(line,'cmd');
+    history.unshift(line); hi=-1;
+    const [c,...rest]=line.split(/\s+/);
+    const fn=CMD[c.toLowerCase()];
+    if(fn){ fn.call(CMD, rest.join(' ')); }
+    else{ print("command not found: <span class='v'>"+c+"</span> — type <span class='t'>help</span>",'muted'); }
+  }
+
+  function boot(){
+    out=document.getElementById('termOut'); inp=document.getElementById('termIn');
+    print('<span class="t">keshav-os</span> v2.6 — interactive portfolio shell','muted');
+    print('Type <span class="t">help</span> to list commands, or click one:','muted');
+    print('<span class="term-chip" data-c="projects">projects</span><span class="term-chip" data-c="open obscura">open obscura</span><span class="term-chip" data-c="resume">resume</span><span class="term-chip" data-c="contact">contact</span><span class="term-chip" data-c="research">research</span>');
+    out.addEventListener('click',e=>{ const ch=e.target.closest('.term-chip'); if(ch){ run(ch.dataset.c); } });
+    inp.addEventListener('keydown',e=>{
+      if(e.key==='Enter'){ run(inp.value); inp.value=''; }
+      else if(e.key==='ArrowUp'){ if(hi<history.length-1){hi++; inp.value=history[hi]||'';} e.preventDefault(); }
+      else if(e.key==='ArrowDown'){ if(hi>0){hi--; inp.value=history[hi]||'';} else {hi=-1; inp.value='';} e.preventDefault(); }
+    });
+  }
+  return { boot, run };
+})();
+
+function openTerm(){
+  const o=document.getElementById('termOverlay');
+  o.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('termIn').focus(),60);
+}
+function closeTerm(){
+  document.getElementById('termOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+// Global hotkeys: "/" or Ctrl/Cmd+K opens the terminal
+document.addEventListener('keydown',e=>{
+  const typing=/^(INPUT|TEXTAREA)$/.test((e.target.tagName||''));
+  if((e.key==='/' && !typing) || ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k')){
+    e.preventDefault(); openTerm();
+  }
+});
+
 /* ═══════════════════════════════════════════════
    CONTACT FORM
 ═══════════════════════════════════════════════ */
 function sendForm(e){
   e.preventDefault();
   const form=e.target;
-  const btn=form.querySelector('button');
-  const ok=()=>{btn.textContent='[ MESSAGE SENT ✓ ]';btn.style.cssText='width:100%;text-align:center;background:rgba(39,201,63,.12);color:#27c93f;border-color:rgba(39,201,63,.4)';form.reset();setTimeout(()=>{btn.textContent='[ TRANSMIT MESSAGE ]';btn.style.cssText='width:100%;text-align:center'},3500)};
+  const btn=form.querySelector('button[type=submit]');
+  const base='width:100%;text-align:center';
+  const set=(txt,extra='')=>{btn.textContent=txt;btn.style.cssText=base+extra};
+  const ok=()=>{set('[ MESSAGE SENT ✓ ]',';background:rgba(39,201,63,.12);color:#27c93f;border-color:rgba(39,201,63,.4)');form.reset();setTimeout(()=>set('[ TRANSMIT MESSAGE ]'),4000)};
   const name=(document.getElementById('cf-name').value||'').trim();
   const from=(document.getElementById('cf-email').value||'').trim();
   const msg=(document.getElementById('cf-msg').value||'').trim();
 
-  // Fallback: if Formspree isn't configured yet, open the visitor's mail client
+  // Guaranteed fallback if the network request can't complete: open a pre-filled email.
   function mailFallback(){
     const subject=encodeURIComponent('Portfolio contact — '+(name||'New message'));
     const body=encodeURIComponent('Name: '+name+'\nFrom: '+from+'\n\n'+msg);
     window.location.href='mailto:keshavsingla940@gmail.com?subject='+subject+'&body='+body;
-    btn.textContent='[ OPENING MAIL CLIENT ✓ ]';
-    setTimeout(()=>{btn.textContent='[ TRANSMIT MESSAGE ]'},3500);
+    set('[ OPENING MAIL CLIENT… ]');
+    setTimeout(()=>set('[ TRANSMIT MESSAGE ]'),4000);
   }
 
-  if(form.action.includes('FORM_ID')){mailFallback();return}
-
-  btn.textContent='[ TRANSMITTING... ]';
-  fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
-    .then(r=>{if(r.ok){ok()}else{mailFallback()}})
-    .catch(mailFallback);
+  set('[ TRANSMITTING… ]');
+  fetch(form.action,{
+    method:'POST',
+    body:new FormData(form),
+    headers:{'Accept':'application/json'}
+  })
+  .then(r=>r.json().catch(()=>({})).then(d=>({r,d})))
+  .then(({r,d})=>{
+    // FormSubmit returns {success:"true"} on success; first-ever submit returns a confirmation notice (also fine)
+    if(r.ok || d.success==='true' || (d.message&&/confirm/i.test(d.message))){ok()}
+    else{mailFallback()}
+  })
+  .catch(mailFallback);
 }
 
 /* ═══════════════════════════════════════════════
@@ -1593,7 +1791,7 @@ function closeCase(){
   document.getElementById('caseOverlay').classList.remove('open');
   document.body.style.overflow='';
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCase()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCase();closeTerm()}});
 
 /* ═══════════════════════════════════════════════
    BOOT EVERYTHING
@@ -1609,6 +1807,8 @@ function boot(){
   initTilt();
   initMagnetic();
   initNavScroll();
+  TERM.boot();
+  setTimeout(()=>{const h=document.getElementById('termHint');if(h)h.classList.add('show')},1400);
 }
 </script>
 </body>
