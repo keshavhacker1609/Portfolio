@@ -679,6 +679,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
     <a href="#education">Education</a>
     <a href="#research">Research</a>
     <a href="#contact">Contact</a>
+    <a href="Keshav_Singla_Resume.pdf" download style="color:var(--t);border:1px solid var(--b);padding:5px 12px;border-radius:3px">↓ RÉSUMÉ</a>
   </div>
   <div class="ns"><div class="sd"></div><span>AVAILABLE · 2026</span></div>
   <button id="hbg" onclick="toggleMenu()" aria-label="Menu">
@@ -706,6 +707,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
       <p class="ho rv d3">I build and break machine-learning systems — I audit models for privacy leakage, defend pipelines against adversarial attacks, and ship AI backends that hold up under real-world scrutiny.</p>
       <div class="hcta rv d4">
         <a href="#projects" class="bp">[ VIEW RESEARCH ]</a>
+        <a href="Keshav_Singla_Resume.pdf" download class="bo">[ ↓ RÉSUMÉ ]</a>
         <a href="#contact" class="bo">[ CONTACT ]</a>
       </div>
       <div class="hso rv d5">
@@ -1713,6 +1715,7 @@ const TERM = (function(){
         ['education','degrees &amp; coursework'],
         ['research','active research paper'],
         ['contact','how to reach me'],
+        ['resume','download my résumé'],
         ['github / linkedin','open my profiles'],
         ['whoami','quick identity readout'],
         ['stack','one-liner tech summary'],
@@ -1738,7 +1741,7 @@ const TERM = (function(){
     education(){ print('B.Tech CSE @ <span class="t">SRM IST Chennai</span> (CGPA 7.76/10, Class of \'28) · CBSE @ Blooming Dales Int\'l School (2024). Opening section →'); go('#education'); },
     research(){ print('Paper (in progress, targeting arXiv): <span class="v">"A Unified Framework for Auditing, Mitigating &amp; Reporting Attribute Leakage in Face Recognition"</span>'); go('#research'); },
     contact(){ print('Email: <a href="mailto:keshavsingla940@gmail.com">keshavsingla940@gmail.com</a> · Phone: +91 80944 96564'); print('Opening contact →','muted'); go('#contact'); },
-    resume(){ print('Résumé available on request — reach out via <a href="mailto:keshavsingla940@gmail.com">email</a> or the contact form.','t'); go('#contact'); },
+    resume(){ print('Downloading résumé…','t'); const a=document.createElement('a'); a.href='Keshav_Singla_Resume.pdf'; a.download=''; a.click(); },
     github(){ print('Opening GitHub →','t'); window.open('https://github.com/keshavhacker1609','_blank'); },
     linkedin(){ print('Opening LinkedIn →','t'); window.open('https://www.linkedin.com/in/keshavsingla1609','_blank'); },
     clear(){ out.innerHTML=''; },
@@ -1773,7 +1776,7 @@ const TERM = (function(){
     out=document.getElementById('termOut'); inp=document.getElementById('termIn');
     print('<span class="t">keshav-os</span> v2.6 — interactive portfolio shell','muted');
     print('Type <span class="t">help</span> to list commands, or click one:','muted');
-    print('<span class="term-chip" data-c="projects">projects</span><span class="term-chip" data-c="open obscura">open obscura</span><span class="term-chip" data-c="contact">contact</span><span class="term-chip" data-c="research">research</span>');
+    print('<span class="term-chip" data-c="projects">projects</span><span class="term-chip" data-c="open obscura">open obscura</span><span class="term-chip" data-c="resume">resume</span><span class="term-chip" data-c="contact">contact</span><span class="term-chip" data-c="research">research</span>');
     out.addEventListener('click',e=>{ const ch=e.target.closest('.term-chip'); if(ch){ run(ch.dataset.c); } });
     inp.addEventListener('keydown',e=>{
       if(e.key==='Enter'){ run(inp.value); inp.value=''; }
